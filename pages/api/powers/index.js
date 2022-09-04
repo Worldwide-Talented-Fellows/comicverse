@@ -1,33 +1,6 @@
-import dbConnect from "../../../lib/dbConnect";
-import Power from "../../../models/Power";
-
-export const errorHandler = (error, req, res) => {
-  if (error.name === "CastError") {
-    return res.status(400).json({
-      success: false,
-      message: `Invalid ${error.path}: ${error.value}.`,
-    });
-  }
-  if (error.name === "ValidationError") {
-    const errors = Object.values(error.errors).map((el) => el.message);
-    return res.status(400).json({
-      success: false,
-      message: `Invalid input data. ${errors.join(" ")}`,
-    });
-  }
-  if (error.code === 11000) {
-    const value = error.errmsg.match(/(["'])(\\?.)*?\1/)[0];
-    return res.status(400).json({
-      success: false,
-      message: `Duplicate field value: ${value}. Please use another value!`,
-    });
-  }
-
-  res.status(500).json({
-    success: false,
-    message: "Something went wrong! Please try again later.",
-  });
-};
+import { errorHandler } from "../../../server/helpers/error-handler";
+import dbConnect from "../../../server/lib/dbConnect";
+import Power from "../../../server/models/Power";
 
 export default async function handler(req, res) {
   const { method } = req;
