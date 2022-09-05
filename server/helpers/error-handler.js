@@ -1,4 +1,6 @@
 export const errorHandler = (error, req, res) => {
+  console.log(error);
+
   if (error.name === "CastError") {
     return res.status(400).json({
       success: false,
