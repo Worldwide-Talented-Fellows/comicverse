@@ -1,3 +1,4 @@
+import { DEFAULT_LIMIT, MAX_LIMIT } from "../../../server/constants/search";
 import { errorHandler } from "../../../server/helpers/error-handler";
 import dbConnect from "../../../server/lib/dbConnect";
 import Power from "../../../server/models/Power";
@@ -13,6 +14,12 @@ export default async function handler(req, res) {
       try {
         const { name, sort } = req.query;
         let { page, limit } = req.query;
+
+        // Ensure limit does not exceed MAX_LIMIT
+        if (limit > MAX_LIMIT) {
+          limit = MAX_LIMIT;
+        }
+
         const query = Power.find({});
 
         // Filter query
@@ -32,7 +39,7 @@ export default async function handler(req, res) {
 
         // Paginate results
         page = page * 1 || 1;
-        limit = limit * 1 || 100;
+        limit = limit * 1 || DEFAULT_LIMIT;
         const skip = (page - 1) * limit;
         query.skip(skip).limit(limit);
 
