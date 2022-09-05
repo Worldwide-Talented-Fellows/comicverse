@@ -1,5 +1,5 @@
-import dbConnect from "../../../lib/dbConnect";
-import CharacterModel from "../../../models/Character";
+import dbConnect from "../../../server/lib/dbConnect";
+import CharacterModel from "../../../server/models/Character";
 
 export default async function handler(req, res) {
   await dbConnect();
