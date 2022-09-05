@@ -1,6 +1,6 @@
-import dbConnect from "../../../lib/dbConnect";
-import Power from "../../../models/Power";
-import { errorHandler } from "./index";
+import dbConnect from "../../../server/lib/dbConnect";
+import Power from "../../../server/models/Power";
+import { errorHandler } from "../../../server/helpers/error-handler";
 
 export default async function handler(req, res) {
   const { method } = req;
