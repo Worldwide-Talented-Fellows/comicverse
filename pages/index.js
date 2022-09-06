@@ -25,7 +25,6 @@ export default function Home() {
 
 			{/* ---- Created for the auth test purposes. Will be deleted later. -----  */}
 			{!session ? <button onClick={signIn}>Sign In</button> : <button onClick={signOut}>Sign Out</button>}
-      {/* {powers.map((item) => <div>item.</div>)} */}
 			{/* ---- Created for the auth test purposes. Will be deleted later. -----  */}
 		</div>
 	);
