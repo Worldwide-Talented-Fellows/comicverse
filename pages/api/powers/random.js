@@ -1,6 +1,6 @@
-import dbConnect from "../../../server/lib/dbConnect";
-import Power from "../../../server/models/Power";
-import { errorHandler } from "../../../server/helpers/error-handler";
+import dbConnect from '../../../server/lib/dbConnect';
+import Power from '../../../server/models/Power';
+import { errorHandler } from '../../../server/helpers/error-handler';
 
 export default async function handler(req, res) {
   const { method } = req;
@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   await dbConnect();
 
   switch (method) {
-    case "GET":
+    case 'GET':
       /* GET /api/powers/random => Get a random power from database */
       try {
         const getRandomNumber = (min, max) => {

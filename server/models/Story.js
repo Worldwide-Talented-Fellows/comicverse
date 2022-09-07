@@ -1,19 +1,19 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const StorySchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: [true, "Please provide a title for this story."],
+      required: [true, 'Please provide a title for this story.'],
     },
     description: {
       type: String,
-      required: [true, "Please provide a description for this story."],
+      required: [true, 'Please provide a description for this story.'],
     },
     author: {
       type: mongoose.Schema.ObjectId,
-      ref: "User",
-      required: [true, "Please provide an author for this story."],
+      ref: 'User',
+      required: [true, 'Please provide an author for this story.'],
     },
   },
   {
@@ -22,4 +22,4 @@ const StorySchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.models.Story || mongoose.model("Story", StorySchema);
+export default mongoose.models.Story || mongoose.model('Story', StorySchema);
