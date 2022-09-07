@@ -2,6 +2,12 @@ import { useSession, signOut, signIn } from "next-auth/react";
 import { useEffect, useState } from "react";
 
 export default function Home() {
+
+	/*THİS CODE IS FOR TESTING PURPOSE CAN BE WILL BE DELETED 
+	  YOU CAN CHECK IF THE DATABASE IS CONNECTED BY LOOKING TO CONSOLE
+
+	  YOU CAN DELETE THIS CODE IF NEEDED! 
+	*/ 	
 	const { data: session, status } = useSession();
 	const [powers, setPowers] = useState([]);
 
