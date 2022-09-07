@@ -1,17 +1,17 @@
 export const errorHandler = (error, req, res) => {
   console.log(error);
 
-  if (error.name === "CastError") {
+  if (error.name === 'CastError') {
     return res.status(400).json({
       success: false,
       message: `Invalid ${error.path}: ${error.value}.`,
     });
   }
-  if (error.name === "ValidationError") {
+  if (error.name === 'ValidationError') {
     const errors = Object.values(error.errors).map((el) => el.message);
     return res.status(400).json({
       success: false,
-      message: `Invalid input data. ${errors.join(" ")}`,
+      message: `Invalid input data. ${errors.join(' ')}`,
     });
   }
   if (error.code === 11000) {
@@ -24,6 +24,6 @@ export const errorHandler = (error, req, res) => {
 
   res.status(500).json({
     success: false,
-    message: "Something went wrong! Please try again later.",
+    message: 'Something went wrong! Please try again later.',
   });
 };

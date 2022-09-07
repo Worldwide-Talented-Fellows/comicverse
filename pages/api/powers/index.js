@@ -1,7 +1,7 @@
-import { DEFAULT_LIMIT, MAX_LIMIT } from "../../../server/constants/search";
-import { errorHandler } from "../../../server/helpers/error-handler";
-import dbConnect from "../../../server/lib/dbConnect";
-import Power from "../../../server/models/Power";
+import { DEFAULT_LIMIT, MAX_LIMIT } from '../../../server/constants/search';
+import { errorHandler } from '../../../server/helpers/error-handler';
+import dbConnect from '../../../server/lib/dbConnect';
+import Power from '../../../server/models/Power';
 
 export default async function handler(req, res) {
   const { method } = req;
@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   await dbConnect();
 
   switch (method) {
-    case "GET":
+    case 'GET':
       /* GET /api/powers => Get powers from database */
       try {
         const { name, sort } = req.query;
@@ -25,7 +25,7 @@ export default async function handler(req, res) {
         // Filter query
         if (name) {
           query.find({
-            name: { $regex: name, $options: "gi" },
+            name: { $regex: name, $options: 'gi' },
           });
         }
 
@@ -55,7 +55,7 @@ export default async function handler(req, res) {
         errorHandler(error, req, res);
       }
       break;
-    case "POST":
+    case 'POST':
       /* POST /api/powers => Add a power to database */
       try {
         const power = await Power.create(req.body);

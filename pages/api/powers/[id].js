@@ -1,6 +1,6 @@
-import dbConnect from "../../../server/lib/dbConnect";
-import Power from "../../../server/models/Power";
-import { errorHandler } from "../../../server/helpers/error-handler";
+import dbConnect from '../../../server/lib/dbConnect';
+import Power from '../../../server/models/Power';
+import { errorHandler } from '../../../server/helpers/error-handler';
 
 export default async function handler(req, res) {
   const {
@@ -11,14 +11,14 @@ export default async function handler(req, res) {
   await dbConnect();
 
   switch (method) {
-    case "GET":
+    case 'GET':
       /* GET /api/powers/:id => Get a specific power from database (by its id) */
       try {
         const power = await Power.findById(id);
         if (!power) {
           return res
             .status(404)
-            .json({ success: false, message: "Power not found." });
+            .json({ success: false, message: 'Power not found.' });
         }
         res.status(200).json({ success: true, data: power });
       } catch (error) {
@@ -26,7 +26,7 @@ export default async function handler(req, res) {
       }
       break;
 
-    case "PUT":
+    case 'PUT':
       /* PUT /api/powers/:id => Update a specific power in database */
       try {
         const power = await Power.findByIdAndUpdate(id, req.body, {
@@ -36,7 +36,7 @@ export default async function handler(req, res) {
         if (!power) {
           return res
             .status(404)
-            .json({ success: false, message: "Power not found." });
+            .json({ success: false, message: 'Power not found.' });
         }
         res.status(200).json({ success: true, data: power });
       } catch (error) {
@@ -44,14 +44,14 @@ export default async function handler(req, res) {
       }
       break;
 
-    case "DELETE":
+    case 'DELETE':
       /* DELETE /api/powers/:id => Remove a specific power from database */
       try {
         const deletedPower = await Power.deleteOne({ _id: id });
         if (!deletedPower?.deletedCount) {
           return res
             .status(404)
-            .json({ success: false, message: "Power not found." });
+            .json({ success: false, message: 'Power not found.' });
         }
         res.status(200).json({ success: true, data: {} });
       } catch (error) {

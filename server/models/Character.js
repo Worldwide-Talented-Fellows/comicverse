@@ -1,27 +1,27 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const CharacterSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "Please provide a name for this character."],
+      required: [true, 'Please provide a name for this character.'],
     },
     description: {
       type: String,
-      required: [true, "Please provide a description for this character."],
+      required: [true, 'Please provide a description for this character.'],
     },
     author: {
       type: mongoose.Schema.ObjectId,
-      ref: "User",
-      required: [true, "Please provide an author for this character."],
+      ref: 'User',
+      required: [true, 'Please provide an author for this character.'],
     },
     powers: {
       type: [mongoose.Schema.Types.ObjectId],
-      ref: "Power",
+      ref: 'Power',
     },
     stories: {
       type: [mongoose.Schema.Types.ObjectId],
-      ref: "Story",
+      ref: 'Story',
     },
   },
   {
@@ -31,4 +31,4 @@ const CharacterSchema = new mongoose.Schema(
 );
 
 export default mongoose.models.Character ||
-  mongoose.model("Character", CharacterSchema);
+  mongoose.model('Character', CharacterSchema);
