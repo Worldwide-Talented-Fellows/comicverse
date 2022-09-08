@@ -1,4 +1,4 @@
-import { errorHandler } from "../../../server/helpers/error-handler";
+import errorHandler from "../../../server/helpers/error-handler";
 import { NotFoundError } from "../../../server/helpers/errors";
 import dbConnect from "../../../server/lib/dbConnect";
 import User from "../../../server/models/User";
@@ -13,10 +13,10 @@ export default async function handler(req, res) {
 		case "GET":
 			try {
 				const user = await User.findById(id);
-				if (!user) throw NotFoundError("User not found");
+				if (!user) throw new NotFoundError("User not found");
 				res.status(200).json({ success: true, data: user });
 			} catch (error) {
-				errorHandler(err, res);
+				errorHandler(error, res);
 			}
 			break;
 		case "DELETE":
@@ -25,7 +25,7 @@ export default async function handler(req, res) {
 					_id: id,
 				});
 
-				if (!deletedUser?.deletedCount) throw NotFoundError("User not found");
+				if (!deletedUser?.deletedCount) throw new NotFoundError("User not found");
 
 				res.status(200).json({ success: true, data: {} });
 			} catch (error) {

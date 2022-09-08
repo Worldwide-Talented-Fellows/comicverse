@@ -9,7 +9,7 @@ const errorMap = {
 	NotFoundError: (error, res) => {
 		return sendErrorResponse(res, 404, error.message ?? "Data is not exists");
 	},
-	11000: () => {
+	11000: (res) => {
 		const value = error.errmsg.match(/(["'])(\\?.)*?\1/)[0];
 		return sendErrorResponse(res, 400, `Duplicate field value: ${value}. Please use another value!`);
 	},
