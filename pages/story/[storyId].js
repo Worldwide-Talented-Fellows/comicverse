@@ -1,5 +1,3 @@
-import React from "react";
-
 const Story = () => {
   return (
     <>
@@ -60,10 +58,10 @@ const Story = () => {
         <section>
           <span>Share</span>
           <span>Save as Draft</span>
-            <div>
+          <div>
             <button>Add New Chapter</button>
             <button>Publish</button>
-          </div>        
+          </div>
         </section>
       </article>
     </>
