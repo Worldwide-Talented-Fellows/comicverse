@@ -1,14 +1,16 @@
-import { unstable_getServerSession } from 'next-auth';
-import { MAX_LIMIT } from '../../../server/constants/search';
-import { errorHandler } from '../../../server/helpers/error-handler';
-import { getLimitAndSkip } from '../../../server/helpers/query-helper';
-import dbConnect from '../../../server/lib/dbConnect';
-import User from '../../../server/models/User';
+import { unstable_getServerSession } from "next-auth";
+import { MAX_LIMIT } from "../../../server/constants/search";
+import { errorHandler } from "../../../server/helpers/error-handler";
+import { getLimitAndSkip } from "../../../server/helpers/query-helper";
+import dbConnect from "../../../server/lib/dbConnect";
+import User from "../../../server/models/User";
+import { authOptions } from "../auth/[...nextauth]";
 
 export default async function handler(req, res) {
-  const { method } = req;
-
-  await dbConnect();
+	const { method } = req;
+    const session = await unstable_getServerSession(req, res, authOptions);
+    console.log(session)
+	await dbConnect();
 
   switch (method) {
     case 'GET':
