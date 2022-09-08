@@ -1,24 +1,24 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const ChapterSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: [true, "Please provide a title for this chapter."],
+      required: [true, 'Please provide a title for this chapter.'],
     },
     content: {
       type: String,
-      required: [true, "Please provide a content for this chapter."],
+      required: [true, 'Please provide a content for this chapter.'],
     },
     story: {
       type: mongoose.Schema.ObjectId,
-      ref: "Story",
-      required: [true, "Please provide a story for this chapter."],
+      ref: 'Story',
+      required: [true, 'Please provide a story for this chapter.'],
     },
     author: {
       type: mongoose.Schema.ObjectId,
-      ref: "User",
-      required: [true, "Please provide an author for this chapter."],
+      ref: 'User',
+      required: [true, 'Please provide an author for this chapter.'],
     },
   },
   {
@@ -28,4 +28,4 @@ const ChapterSchema = new mongoose.Schema(
 );
 
 export default mongoose.models.Chapter ||
-  mongoose.model("Chapter", ChapterSchema);
+  mongoose.model('Chapter', ChapterSchema);

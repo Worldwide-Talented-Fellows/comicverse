@@ -1,10 +1,18 @@
+<<<<<<< HEAD
 import mongoose from "mongoose";
+=======
+import mongoose from 'mongoose';
+>>>>>>> 3c080bbcb9994c74405642f832c29b8f1982be55
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {
   throw new Error(
+<<<<<<< HEAD
     "Please define the MONGODB_URI environment variable inside .env.local"
+=======
+    'Please define the MONGODB_URI environment variable inside .env.local'
+>>>>>>> 3c080bbcb9994c74405642f832c29b8f1982be55
   );
 }
 
