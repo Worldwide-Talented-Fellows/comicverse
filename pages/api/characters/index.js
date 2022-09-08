@@ -10,15 +10,9 @@ export default async function handler(req, res) {
       try {
         const character = req.body;
 
-        if (!character) {
-          return res
-            .status(400)
-            .json({ errorMessage: "you didn't provide character object" });
-        }
+        const dbCharacter = await CharacterModel.create(character);
 
-        await CharacterModel.create(character);
-
-        return res.send(character);
+        return res.send(dbCharacter);
       } catch (error) {
         return res.status(400).json({ errorMessage: error.message });
       }

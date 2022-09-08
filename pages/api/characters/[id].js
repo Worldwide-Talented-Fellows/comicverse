@@ -15,7 +15,7 @@ export default async function handler(req, res) {
         return res.json(character);
       } catch (error) {
         return res
-          .status(400)
+          .status(404)
           .json({ errorMessage: "No character with such id" });
       }
 
@@ -29,22 +29,16 @@ export default async function handler(req, res) {
         );
         return res.json(updatedCharacter);
       } catch (error) {
-        return res.status(400).json({ errorMessage: error.message });
+        return res.status(404).json({ errorMessage: error.message });
       }
 
     case "DELETE":
       try {
         const deletedCharacter = await CharacterModel.findByIdAndDelete(id);
 
-        if (!deletedCharacter) {
-          res.status(400).json({
-            errorMessage: "can't delete character with non-existent id",
-          });
-        }
-
-        return res.json(deletedCharacter);
+        return res.status(202);
       } catch (error) {
-        return res.status(400).json({ errorMessage: error.message });
+        return res.status(404).json({ errorMessage: error.message });
       }
 
     default:
