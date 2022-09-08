@@ -12,8 +12,13 @@ const CharacterSchema = new mongoose.Schema(
     },
     author: {
       type: mongoose.Schema.ObjectId,
+<<<<<<< HEAD
+      ref: "User",
+      // required: [true, "Please provide an author for this character."],
+=======
       ref: 'User',
       required: [true, 'Please provide an author for this character.'],
+>>>>>>> 3c080bbcb9994c74405642f832c29b8f1982be55
     },
     powers: {
       type: [mongoose.Schema.Types.ObjectId],

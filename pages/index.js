@@ -2,6 +2,9 @@ import { useSession, signOut, signIn } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 
 export default function Home() {
+<<<<<<< HEAD
+  return <div>Welcome To The Comivcerse</div>;
+=======
   /*THİS CODE IS FOR TESTING PURPOSE CAN BE WILL BE DELETED 
 	  YOU CAN CHECK IF THE DATABASE IS CONNECTED BY LOOKING TO CONSOLE
 
@@ -37,4 +40,5 @@ export default function Home() {
       {/* ---- Created for the auth test purposes. Will be deleted later. -----  */}
     </div>
   );
+>>>>>>> 3c080bbcb9994c74405642f832c29b8f1982be55
 }
