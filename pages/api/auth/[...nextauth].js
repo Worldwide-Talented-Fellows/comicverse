@@ -30,7 +30,16 @@ export const authOptions = {
 				password: { label: "Password", type: "password" },
 			},
 		}),
-	]
+	],
+	callbacks: {
+		async session({ session, user, token }) {
+			return {
+				session,
+				user,
+				token,
+			};
+		},
+	},
 };
 
 export default NextAuth(authOptions);
