@@ -12,70 +12,70 @@ export default async function handler(req, res) {
     console.log(session)
 	await dbConnect();
 
-	switch (method) {
-		case "GET":
-			try {
-				const { name, email, role, emailVerified, sort } = req.query;
-				let { page, limit } = req.query;
+  switch (method) {
+    case 'GET':
+      try {
+        const { name, email, role, emailVerified, sort } = req.query;
+        let { page, limit } = req.query;
 
-				limit = limit > MAX_LIMIT ? MAX_LIMIT : limit;
-				const query = User.find({});
-				if (name) {
-					query.find({
-						name: { $regex: name, $options: "gi" },
-					});
-				}
-				if (sort) {
-					query.sort(sort);
-				}
-				if (email) {
-					query.find({
-						email: { $regex: email, $options: "gi" },
-					});
-				}
-				if (role) {
-					query.find({
-						role,
-					});
-				}
-				if (emailVerified) {
-					query.find({
-						emailVerified,
-					});
-				}
+        limit = limit > MAX_LIMIT ? MAX_LIMIT : limit;
+        const query = User.find({});
+        if (name) {
+          query.find({
+            name: { $regex: name, $options: 'gi' },
+          });
+        }
+        if (sort) {
+          query.sort(sort);
+        }
+        if (email) {
+          query.find({
+            email: { $regex: email, $options: 'gi' },
+          });
+        }
+        if (role) {
+          query.find({
+            role,
+          });
+        }
+        if (emailVerified) {
+          query.find({
+            emailVerified,
+          });
+        }
 
-				const totalResult = await query.clone().count();
+        const totalResult = await query.clone().count();
 
-				const { qLimit, skip } = getLimitAndSkip(limit, page);
+        const { qLimit, skip } = getLimitAndSkip(limit, page);
 
-                query.skip(skip).limit(qLimit);
+        query.skip(skip).limit(qLimit);
 
-                const users = await query;
-                res.status(200).json({
-                    success: true,
-                    totalResult,
-                    results: users.length,
-                    data: users
-                })
-			} catch (error) {
-                errorHandler(error, req, res)
-            }
-			break;
+        const users = await query;
+        res.status(200).json({
+          success: true,
+          totalResult,
+          results: users.length,
+          data: users,
+        });
+      } catch (error) {
+        errorHandler(error, req, res);
+      }
+      break;
 
-        case 'POST':
-            const { body: user } = req;
-            try {
-                const createdUser = await User.create(user);
-                if (!createdUser) throw Error("Unable to create user");
-                return res.status(200).json({
-                    success: true,
-                    data: createdUser,
-                });
-            } catch (error) {
-                errorHandler(error, req, res);
-            }
-        break;
-		default:
-			break;
-	}
+    case 'POST':
+      const { body: user } = req;
+      try {
+        const createdUser = await User.create(user);
+        if (!createdUser) throw Error('Unable to create user');
+        return res.status(200).json({
+          success: true,
+          data: createdUser,
+        });
+      } catch (error) {
+        errorHandler(error, req, res);
+      }
+      break;
+    default:
+      break;
+  }
 }

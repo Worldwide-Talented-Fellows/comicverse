@@ -1,20 +1,20 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const CommentSchema = new mongoose.Schema(
   {
     content: {
       type: String,
-      required: [true, "Please provide a content for this comment."],
+      required: [true, 'Please provide a content for this comment.'],
     },
     chapter: {
       type: mongoose.Schema.ObjectId,
-      ref: "Chapter",
-      required: [true, "Please provide a chapter for this comment."],
+      ref: 'Chapter',
+      required: [true, 'Please provide a chapter for this comment.'],
     },
     author: {
       type: mongoose.Schema.ObjectId,
-      ref: "User",
-      required: [true, "Please provide an author for this comment."],
+      ref: 'User',
+      required: [true, 'Please provide an author for this comment.'],
     },
   },
   {
@@ -24,4 +24,4 @@ const CommentSchema = new mongoose.Schema(
 );
 
 export default mongoose.models.Comment ||
-  mongoose.model("Comment", CommentSchema);
+  mongoose.model('Comment', CommentSchema);
