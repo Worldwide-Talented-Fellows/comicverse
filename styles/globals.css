@@ -1,4 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+:root {
+  --main-box-color:  #D9D9D9;
+  --color: #000000;
+  --footer-bg-color: #8D99AE;
+  --navbar-bg-color: #8D99AE;
+}
+
+
 html,
 body {
   padding: 0;
