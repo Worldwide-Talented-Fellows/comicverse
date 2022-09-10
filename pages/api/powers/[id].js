@@ -1,4 +1,3 @@
-import { unstable_getServerSession } from 'next-auth';
 import dbConnect from '../../../server/lib/dbConnect';
 import Power from '../../../server/models/Power';
 import errorHandler from '../../../server/helpers/error-handler';
@@ -6,7 +5,7 @@ import {
     AuthorizationError,
     NotFoundError,
 } from '../../../server/helpers/errors';
-import { authOptions } from '../auth/[...nextauth]';
+import getAuthenticatedUser from '../../../server/helpers/auth/token';
 
 export default async function handler(req, res) {
     const {
@@ -16,7 +15,7 @@ export default async function handler(req, res) {
 
     await dbConnect();
 
-    const session = await unstable_getServerSession(req, res, authOptions);
+    const session = await getAuthenticatedUser(req);
 
     switch (method) {
         case 'GET':

@@ -11,3 +11,17 @@ export class AuthorizationError extends Error {
         this.name = 'AuthorizationError';
     }
 }
+
+export class RestrictedMethodError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = 'RestrictedMethodError';
+    }
+}
+
+export class MissingCredentialsError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = 'MissingCredentialsError';
+    }
+}
