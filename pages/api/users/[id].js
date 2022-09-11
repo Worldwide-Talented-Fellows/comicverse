@@ -1,7 +1,12 @@
 import errorHandler from '../../../server/helpers/error-handler';
-import { NotFoundError } from '../../../server/helpers/errors';
+import {
+    NotFoundError,
+    RestrictedMethodError,
+    AuthorizationError,
+} from '../../../server/helpers/errors';
 import dbConnect from '../../../server/lib/dbConnect';
 import User from '../../../server/models/User';
+import getAuthenticatedUser from '../../../server/helpers/auth/token';
 
 export default async function handler(req, res) {
     const {
@@ -9,16 +14,44 @@ export default async function handler(req, res) {
         method,
     } = req;
     await dbConnect();
+
     switch (method) {
         case 'GET':
             try {
-                const user = await User.findById(id);
+                const user = await User.findById(id).lean();
                 if (!user) throw new NotFoundError('User not found');
-                res.status(200).json({ success: true, data: user });
+                const { password, ...responseData } = user;
+                res.status(200).json({ success: true, data: responseData });
             } catch (error) {
-                errorHandler(error, res);
+                return errorHandler(error, res);
             }
-            break;
+        case 'PUT':
+            const { body: userUpdateData } = req;
+            try {
+                const user = await getAuthenticatedUser(req);
+                if (!user || user.id !== id)
+                    throw new AuthorizationError('Do not have permission');
+
+                const updatedUser = await User.findByIdAndUpdate(
+                    id,
+                    userUpdateData,
+                    {
+                        new: true,
+                        runValidators: true,
+                    }
+                );
+
+                if (!updatedUser) throw NotFoundError('Unable to update user');
+
+                const { password, ...responseData } = updatedUser;
+
+                return res.status(200).json({
+                    success: true,
+                    data: responseData,
+                });
+            } catch (error) {
+                return errorHandler(error, res);
+            }
         case 'DELETE':
             try {
                 const deletedUser = await User.deleteOne({
@@ -30,15 +63,13 @@ export default async function handler(req, res) {
 
                 res.status(200).json({ success: true, data: {} });
             } catch (error) {
-                errorHandler(error, req, res);
+                return errorHandler(error, req, res);
             }
-            break;
 
         default:
-            res.status(404).json({
-                success: false,
-                message: `Method not found for route: ${req.url}.`,
-            });
-            break;
+            return errorHandler(
+                new RestrictedMethodError('Method not found'),
+                res
+            );
     }
 }
