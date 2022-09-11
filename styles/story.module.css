@@ -1,0 +1,15 @@
+/* placeholder styles */
+.imageContainer {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 10px;
+}
+
+.image {
+    width: 100px;
+    height: 100px;
+    background-color: gray;
+    flex-shrink: 0;
+}

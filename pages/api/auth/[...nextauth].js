@@ -3,15 +3,19 @@ import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import clientPromise from '../../../server/lib/mongoClient';
+import User from '../../../server/models/User';
+import { validateUser } from '../../../server/helpers/auth';
 
 export const authOptions = {
     adapter: MongoDBAdapter(clientPromise),
+    session: {
+        strategy: 'jwt',
+    },
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_ID,
             clientSecret: process.env.GOOGLE_SECRET,
             profile(profile) {
-                console.log(profile);
                 return {
                     id: profile.sub,
                     name: profile.name,
@@ -33,15 +37,22 @@ export const authOptions = {
                 },
                 password: { label: 'Password', type: 'password' },
             },
+            async authorize(credentials, req) {
+                const user = await validateUser(credentials);
+                if (!user) return null;
+                return user;
+            },
         }),
     ],
     callbacks: {
-        async session({ session, user, token }) {
-            return {
-                user,
-                expires: session.expires,
-            };
+        jwt: async ({ token, user }) => {
+            user && (token.user = user)
+            return token
         },
+        session: async ({ session, token }) => {
+            session.user = token.user
+            return session
+        }
     },
 };
 
