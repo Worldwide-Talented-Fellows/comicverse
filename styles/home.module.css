@@ -11,9 +11,25 @@
     height: 97px;
     left: 0px;
     top: 0px;
+    display: flex;
 
     /* Grey */
     background: #8d99ae;
+    align-items: center;
+}
+
+#nav span {
+    width: 200px;
+    height: 60px;
+    background: #d9d9d9;
+    margin-left: 50px;
+    margin-right: 120px;
+}
+#nav a {
+    margin-right: 70px;
+}
+#nav input {
+    margin-right: 120px;
 }
 
 .heroContainer1 {
