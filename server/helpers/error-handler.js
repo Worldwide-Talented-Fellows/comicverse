@@ -28,7 +28,21 @@ const errorMap = {
             error.message ?? 'Unauthorized request'
         );
     },
-    11000: (res) => {
+    RestrictedMethodError: (error, res) => {
+        return sendErrorResponse(
+            res,
+            405,
+            error.message ?? 'Method Not Allowed'
+        );
+    },
+    MissingCredentialsError: (error, res) => {
+        return sendErrorResponse(
+            res,
+            400,
+            error.message ?? 'Missing credentials'
+        );
+    },
+    11000: (error, res) => {
         const value = error.errmsg.match(/(["'])(\\?.)*?\1/)[0];
         return sendErrorResponse(
             res,
@@ -36,7 +50,7 @@ const errorMap = {
             `Duplicate field value: ${value}. Please use another value!`
         );
     },
-    DefaultError: (res) => {
+    DefaultError: (error, res) => {
         return sendErrorResponse(res);
     },
 };
@@ -53,6 +67,7 @@ function sendErrorResponse(
 }
 
 export default function errorHandler(error, res) {
+    console.log(error);
     if (error.name in errorMap) {
         return errorMap[error.name](error, res);
     } else if (error.code in errorMap) {
