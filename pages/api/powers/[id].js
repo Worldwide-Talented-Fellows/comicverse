@@ -23,9 +23,7 @@ export default async function handler(req, res) {
             try {
                 const power = await Power.findById(id);
                 if (!power) {
-                    return res
-                        .status(404)
-                        .json({ success: false, message: 'Power not found.' });
+                    throw new NotFoundError('Power not found.');
                 }
                 res.status(200).json({ success: true, data: power });
             } catch (error) {
@@ -78,7 +76,13 @@ export default async function handler(req, res) {
 
         default:
             /* Method not found */
-            throw new NotFoundError(`Method not found for route: ${req.url}.`);
+            try {
+                throw new NotFoundError(
+                    `Method not found for route: ${req.url}.`
+                );
+            } catch (error) {
+                errorHandler(error, res);
+            }
             break;
     }
 }

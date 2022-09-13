@@ -1,6 +1,7 @@
 import dbConnect from '../../../server/lib/dbConnect';
 import Power from '../../../server/models/Power';
 import errorHandler from '../../../server/helpers/error-handler';
+import { NotFoundError } from '../../../server/helpers/errors';
 
 export default async function handler(req, res) {
     const { method } = req;
@@ -29,10 +30,13 @@ export default async function handler(req, res) {
             break;
         default:
             /* Method not found */
-            res.status(404).json({
-                success: false,
-                message: `Method not found for route: ${req.url}.`,
-            });
+            try {
+                throw new NotFoundError(
+                    `Method not found for route: ${req.url}.`
+                );
+            } catch (error) {
+                errorHandler(error, res);
+            }
             break;
     }
 }

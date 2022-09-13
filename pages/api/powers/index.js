@@ -1,7 +1,10 @@
 import { unstable_getServerSession } from 'next-auth';
 import { DEFAULT_LIMIT, MAX_LIMIT } from '../../../server/constants/search';
 import errorHandler from '../../../server/helpers/error-handler';
-import { AuthorizationError } from '../../../server/helpers/errors';
+import {
+    AuthorizationError,
+    NotFoundError,
+} from '../../../server/helpers/errors';
 import dbConnect from '../../../server/lib/dbConnect';
 import Power from '../../../server/models/Power';
 import { authOptions } from '../auth/[...nextauth]';
@@ -79,10 +82,13 @@ export default async function handler(req, res) {
             break;
         default:
             /* Method not found */
-            res.status(404).json({
-                success: false,
-                message: `Method not found for route: ${req.url}.`,
-            });
+            try {
+                throw new NotFoundError(
+                    `Method not found for route: ${req.url}.`
+                );
+            } catch (error) {
+                errorHandler(error, res);
+            }
             break;
     }
 }
