@@ -1,0 +1,45 @@
+.footer {
+    height: 287px;
+    background-color: #8d99ae;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+.grid_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    padding: 10px 125px;
+}
+
+.column_caption {
+    /* background-color: red; */
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 30px;
+    padding: 15px;
+}
+
+.column_paragraph {
+    /* background-color: blue; */
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 26px;
+    padding: 10px;
+    color: rgba(0, 0, 0, 0.51);
+}
+
+.hor_line {
+    border-top: 2px solid black;
+    width: 100%;
+    position: absolute;
+    bottom: 8px;
+}
+
+.test {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: 8px;
+}
