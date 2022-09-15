@@ -1,3 +1,9 @@
 import dbConnect from "../../../server/lib/dbConnect";
 
-export default a
+export default async function handler(req, res) {
+    const {
+        query: { id },
+        method,
+    } = req;
+
+}
