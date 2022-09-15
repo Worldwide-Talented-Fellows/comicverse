@@ -1,20 +1,18 @@
 .footer {
     height: 287px;
     background-color: #8d99ae;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
+    position: relative;
 }
 
 .grid_container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 50px;
-    padding: 10px 125px;
+    padding: 20px 150px;
+    justify-items: center;
 }
 
 .column_caption {
-    /* background-color: red; */
     font-weight: 500;
     font-size: 24px;
     line-height: 30px;
@@ -22,24 +20,29 @@
 }
 
 .column_paragraph {
-    /* background-color: blue; */
     font-weight: 500;
     font-size: 20px;
     line-height: 26px;
     padding: 10px;
     color: rgba(0, 0, 0, 0.51);
-}
-
-.hor_line {
-    border-top: 2px solid black;
-    width: 100%;
-    position: absolute;
-    bottom: 8px;
+    cursor: pointer;
 }
 
 .test {
     text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.51);
     position: absolute;
     width: 100%;
     bottom: 8px;
+}
+
+.test::before {
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 108%;
+    border: 1px solid black;
 }

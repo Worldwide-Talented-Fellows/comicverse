@@ -2,7 +2,7 @@ import styles from '../styles/footer.module.css';
 
 const Footer = () => {
     return (
-        <div className={styles.footer}>
+        <footer className={styles.footer}>
             <div className={styles.grid_container}>
                 <div>
                     <h3 className={styles.column_caption}>Site</h3>
@@ -22,16 +22,13 @@ const Footer = () => {
                 <div>
                     <h3 className={styles.column_caption}>Contact</h3>
                     <p className={styles.column_paragraph}>
-                        comicverser@contact.com
+                        comicverse@contact.com
                     </p>
                     <p className={styles.column_paragraph}>+123 456 789 000</p>
                 </div>
             </div>
-            <div>
-                <hr className={styles.hor_line} />
-                <h3 className={styles.test}>Copyright comicverse 2022</h3>
-            </div>
-        </div>
+            <h3 className={styles.test}>Copyright comicverse 2022</h3>
+        </footer>
     );
 };
 
