@@ -61,6 +61,24 @@ export default async function handler(req, res) {
                 errorHandler(err, res);
             }
             break;
+        
+        case 'DELETE_CHAPTER':
+            try {
+                const deletedChapter = Chapter.findByIdAndDelete(id);
+
+                if (session?.user?.role !== 'author' || session?.user?.role !== 'moderator') {
+                    throw new AuthorizationError(`You don't have the access to delete this chapter, You have to be the author or a moderator`);
+                }
+
+                if (deletedChapter) {
+                    res.status(200).json({ data: {} });
+                } else {
+                    throw new NotFoundError(`Could not delete chapter, chapter with id ${id} does not exist`);
+                }
+            } catch (err) {
+                errorHandler(err, res);
+            }
+            break;
         default:
             break;
     }
