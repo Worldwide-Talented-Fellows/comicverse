@@ -1,4 +1,5 @@
 import getAuthenticatedUser from "../../../server/helpers/auth/token";
+import errorHandler from "../../../server/helpers/error-handler";
 import {
     NotFoundError
 } from "../../../server/helpers/errors";
@@ -28,8 +29,8 @@ export default async function handler(req, res) {
                     throw new NotFoundError(`Chapter ${id} does not exist`);
                 }
                  
-            } catch (error) {
-
+            } catch (err) {
+                errorHandler(err, res)
             }
             break;
 
