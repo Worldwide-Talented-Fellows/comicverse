@@ -1,3 +1,4 @@
+import getAuthenticatedUser from "../../../server/helpers/auth/token";
 import dbConnect from "../../../server/lib/dbConnect";
 
 export default async function handler(req, res) {
@@ -7,4 +8,6 @@ export default async function handler(req, res) {
     } = req;
 
     await dbConnect();
+
+    const session = await getAuthenticatedUser(req);
 }
