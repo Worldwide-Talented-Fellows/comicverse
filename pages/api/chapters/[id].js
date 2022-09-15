@@ -6,4 +6,5 @@ export default async function handler(req, res) {
         method,
     } = req;
 
+    await dbConnect();
 }
