@@ -1,6 +1,7 @@
 import getAuthenticatedUser from "../../../server/helpers/auth/token";
 import errorHandler from "../../../server/helpers/error-handler";
 import {
+    AuthorizationError,
     NotFoundError
 } from "../../../server/helpers/errors";
 import dbConnect from "../../../server/lib/dbConnect";
@@ -24,16 +25,42 @@ export default async function handler(req, res) {
             try {
                 const chapter = await Chapter.findById(id);
                 if (chapter) {
-                    res.status(200).json({data: chapter})
+                    res.status(200).json({
+                        data: chapter
+                    })
                 } else {
-                    throw new NotFoundError(`Chapter ${id} does not exist`);
+                    throw new NotFoundError(`Chapter with ${id} does not exist`);
                 }
-                 
+
             } catch (err) {
                 errorHandler(err, res)
             }
             break;
 
+        case 'UPDATE_CHAPTER':
+            try {
+                const updChapter = req.body;
+                const updatedChapter = Chapter.findByIdAndUpdate(id, updChapter, {
+                    new: true,
+                    runValidators: true
+                });
+
+                if (session?.user?.role !== 'author' || session?.user?.role !== 'moderator') {
+                    throw new AuthorizationError('You have to be the author or a moderator to update this chapter');
+                }
+
+                if (updatedChapter) {
+                    res.status(200).json({
+                        data: updatedChapter
+                    })
+                } else {
+                    throw new NotFoundError(`Cannot update chapter, there is no chapter with the id ${id}`);
+                }
+
+            } catch (err) {
+                errorHandler(err, res);
+            }
+            break;
         default:
             break;
     }
