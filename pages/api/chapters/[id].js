@@ -55,7 +55,7 @@ export default async function handler(req, res) {
                         data: updatedChapter
                     })
                 } else {
-                    throw new NotFoundError(`Cannot update chapter, there is no chapter with the id ${id}`);
+                    throw new NotFoundError(`Could not update chapter, there is no chapter with the id ${id}`);
                 }
 
             } catch (err) {
