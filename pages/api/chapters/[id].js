@@ -52,6 +52,7 @@ export default async function handler(req, res) {
 
                 if (updatedChapter) {
                     res.status(200).json({
+                        message: `Chapter with the id ${id} was updated sucessfully`,
                         data: updatedChapter
                     })
                 } else {
@@ -73,7 +74,8 @@ export default async function handler(req, res) {
 
                 if (deletedChapter) {
                     res.status(200).json({
-                        data: {}
+                        message: `Sucessfully deleted chapter with the id ${id}`,
+                        data: {deletedChapter}
                     });
                 } else {
                     throw new NotFoundError(`Could not delete chapter, chapter with id ${id} does not exist`);
