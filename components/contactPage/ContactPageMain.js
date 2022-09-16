@@ -7,26 +7,30 @@ import TimeSVG from '../../public/assets/contact_page/TimeSVG';
 const ContactPageMain = () => {
     return (
         <div className={styles.container}>
-            <div className={styles.item}>1</div>
+            <div className={styles.item}></div>
 
             <div className={styles.item}>
                 <form className={styles.form_container}>
-                    <div>
-                        <label htmlFor="first_name">First Name</label>
-                        <input
-                            type="text"
-                            id="first_name"
-                            name="fname"
-                            placeholder="John"
-                        />
+                    <div className={styles.names_container}>
+                        <div className={styles.names_div}>
+                            <label htmlFor="first_name">First Name</label>
+                            <input
+                                type="text"
+                                id="first_name"
+                                name="fname"
+                                placeholder="John"
+                            />
+                        </div>
 
-                        <label htmlFor="last_name">Last Name</label>
-                        <input
-                            type="text"
-                            id="last_name"
-                            name="lname"
-                            placeholder="Doe"
-                        />
+                        <div className={styles.names_div}>
+                            <label htmlFor="last_name">Last Name</label>
+                            <input
+                                type="text"
+                                id="last_name"
+                                name="lname"
+                                placeholder="Doe"
+                            />
+                        </div>
                     </div>
 
                     <label htmlFor="email">Email</label>
@@ -46,7 +50,9 @@ const ContactPageMain = () => {
                         className={styles.message_area}
                     />
 
-                    <button type="submit">Send message</button>
+                    <button type="submit" className={styles.submit_button}>
+                        Send message
+                    </button>
                 </form>
             </div>
 
