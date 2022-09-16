@@ -1,0 +1,48 @@
+.footer {
+    height: 287px;
+    background-color: #8d99ae;
+    position: relative;
+}
+
+.grid_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    padding: 20px 150px;
+    justify-items: center;
+}
+
+.column_caption {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 30px;
+    padding: 15px;
+}
+
+.column_paragraph {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 26px;
+    padding: 10px;
+    color: rgba(0, 0, 0, 0.51);
+    cursor: pointer;
+}
+
+.test {
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.51);
+    position: absolute;
+    width: 100%;
+    bottom: 8px;
+}
+
+.test::before {
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 108%;
+    border: 1px solid black;
+}
