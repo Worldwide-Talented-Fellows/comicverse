@@ -27,6 +27,7 @@ export default async function handler(req, res) {
                 const chapter = await Chapter.findById(id);
                 if (chapter) {
                     res.status(200).json({
+                        sucess: true,
                         data: chapter
                     })
                 } else {
@@ -52,6 +53,7 @@ export default async function handler(req, res) {
 
                 if (updatedChapter) {
                     res.status(200).json({
+                        sucess: true,
                         message: `Chapter with the id ${id} was updated sucessfully`,
                         data: updatedChapter
                     })
@@ -74,6 +76,7 @@ export default async function handler(req, res) {
 
                 if (deletedChapter) {
                     res.status(200).json({
+                        sucess: true,
                         message: `Sucessfully deleted chapter with the id ${id}`,
                         data: {deletedChapter}
                     });
