@@ -27,10 +27,8 @@ export default async function handler(req, res) {
                     limit,
                     page
                 } = req.query;
-
-                if (limit > MAX_LIMIT) {
-                    limit = MAX_LIMIT;
-                }
+                
+                limit = limit > MAX_LIMIT ? MAX_LIMIT : limit;
 
                 const query = Chapter.find({});
 
