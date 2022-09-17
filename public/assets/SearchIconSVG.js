@@ -1,5 +1,3 @@
-import React from 'react';
-
 function SearchIconSVG(props) {
     return (
         <svg
