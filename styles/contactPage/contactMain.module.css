@@ -7,7 +7,7 @@
 }
 
 .item:last-of-type {
-    background-color: #1e1e1e;
+    background-color: var(--color-6);
     color: white;
     display: flex;
     flex-direction: column;
@@ -17,16 +17,14 @@
 
 .item:last-of-type > h3 {
     font-family: Poppins;
-    font-size: 28px;
-    font-weight: 700;
+    font-size: var(--fs-28);
     line-height: 36px;
     letter-spacing: 0em;
 }
 
 .item:last-of-type p {
     font-family: Poppins;
-    font-size: 16px;
-    font-weight: 400;
+    font-weight: var(--fw-500);
     line-height: 36px;
     letter-spacing: 0em;
 }
@@ -42,32 +40,27 @@
     flex-direction: column;
     justify-content: space-between;
     margin: 0 50px;
-    padding-top: 15px;
+    padding-top: 50px;
     height: 100%;
-    font-family: 'Poppins';
 }
 
 .form_container input {
     height: 65px;
-    background-color: #ffffff;
-    border: 2px solid #1e1e1e;
+    background-color: var(--color-2);
+    border: 2px solid var(--color-6);
     border-radius: 5px;
-    color: black;
-    font-size: 20px;
+    font-size: var(--fs-20);
+    font-family: 'Poppins';
+    color: #747474;
 }
 
 .form_container label {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 32px;
+    font-weight: var(--fw-500);
+    font-size: var(--fs-32);
     line-height: 40px;
 }
 
 .form_container input::placeholder {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
     color: #d5d5d5;
 }
 
@@ -75,12 +68,16 @@
     height: 200px;
 }
 
+.form_container input:focus {
+    border-width: 3px;
+}
+
 .submit_button {
-    background-color: #1e1e1e;
+    background-color: var(--color-6);
     width: 100%;
     height: 52px;
     border-radius: 5px;
-    font-weight: 600;
+    font-weight: var(--fw-600);
     font-size: 20px;
     border: none;
     cursor: pointer;

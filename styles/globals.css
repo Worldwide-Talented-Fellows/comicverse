@@ -3,8 +3,31 @@ html,
 body {
     padding: 0;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+        Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+        sans-serif;
+}
+
+:root {
+    --color-1: #8d99ae;
+    --color-2: #f9f9f9;
+    --color-3: #2b2d42;
+    --color-4: #181923;
+    --color-5: #d90429;
+    --color-6: #1e1e1e;
+    --fs-32: 32px;
+    --fs-28: 28px;
+    --fs-20: 20px;
+    --fs-12: 12px;
+    --fw-700: 700;
+    --fw-600: 600;
+    --fw-500: 500;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins';
+    margin: 0;
 }
 
 a {
@@ -12,9 +35,12 @@ a {
     text-decoration: none;
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
+input:focus {
+    outline: none;
+}
+
+input::placeholder {
+    font-family: 'Poppins';
 }
 
 @media (prefers-color-scheme: dark) {
