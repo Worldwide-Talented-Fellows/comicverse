@@ -1,11 +1,16 @@
-import { DEFAULT_LIMIT, MAX_LIMIT } from "../../../server/constants/search";
+import {
+    DEFAULT_LIMIT,
+    MAX_LIMIT
+} from "../../../server/constants/search";
 import getAuthenticatedUser from "../../../server/helpers/auth/token";
 import errorHandler from "../../../server/helpers/error-handler";
 import dbConnect from "../../../server/lib/dbConnect";
 import Chapter from "../../../server/models/Chapter";
 
 export default async function handler(req, res) {
-    const {method} = req;
+    const {
+        method
+    } = req;
 
     await dbConnect();
 
@@ -14,8 +19,14 @@ export default async function handler(req, res) {
     switch (method) {
         case "GET_ALL_CHAPTERS":
             try {
-                const {chapter, sort} = req.query;
-                let {limit, page} = req.query;
+                const {
+                    chapter,
+                    sort
+                } = req.query;
+                let {
+                    limit,
+                    page
+                } = req.query;
 
                 if (limit > MAX_LIMIT) {
                     limit = MAX_LIMIT;
@@ -24,10 +35,15 @@ export default async function handler(req, res) {
                 const query = Chapter.find();
 
                 if (chapter) {
-                    query.find({chapter: {$regex: chapter, $options: 'gi'}});
-;                }
+                    query.find({
+                        chapter: {
+                            $regex: chapter,
+                            $options: 'gi'
+                        }
+                    });;
+                }
 
-                if(sort) {
+                if (sort) {
                     query.sort(sort);
                 }
 
@@ -46,11 +62,10 @@ export default async function handler(req, res) {
                     results: results,
                     data: chapters
                 });
-            }
-            catch (err) {
+            } catch (err) {
                 errorHandler(err, res);
             };
-        break;
+            break;
 
         case 'CREATE_CHAPTER':
             try {
@@ -61,14 +76,22 @@ export default async function handler(req, res) {
 
                 res.status(200).json({
                     success: true,
-                    message: 'Successfully created a new chapter',	
+                    message: 'Successfully created a new chapter',
                     data: chapter
                 });
 
-            }
-            catch (err) {
+            } catch (err) {
                 errorHandler(err, res);
             };
-        break;
+            break;
+
+        default:
+            try {
+                const url = req.url;
+                throw new NotFoundError(`Could not find method for the route ${url}`);
+            } catch (err) {
+                errorHandler(err, res)
+            }
+            break;
     }
 }
