@@ -2,7 +2,7 @@ import ContactPageMain from '../../components/contactPage/ContactPageMain';
 import styles from '../../styles/contactPage/contact.module.css';
 import FacebookIcon from '../../public/assets/contact_page/FacebookSVG';
 import InstagramIcon from '../../public/assets/contact_page/InstagramSVG';
-import TwitchIcon from '../../public/assets/contact_page/TwitterSVG';
+import TwitterIcon from '../../public/assets/contact_page/TwitterSVG';
 
 const ContactPage = () => {
     return (
@@ -16,9 +16,27 @@ const ContactPage = () => {
             </header>
             <div className={styles.sidebar}>
                 <div className={styles.sidebar_items}>
-                    <FacebookIcon className={styles.sidebar_item} />
-                    <InstagramIcon className={styles.sidebar_item} />
-                    <TwitchIcon className={styles.sidebar_item} />
+                    <a
+                        href="https://www.facebook.com/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <FacebookIcon className={styles.sidebar_item} />
+                    </a>
+                    <a
+                        href="https://www.instagram.com/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <InstagramIcon className={styles.sidebar_item} />
+                    </a>
+                    <a
+                        href="https://twitter.com/?lang=en"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <TwitterIcon className={styles.sidebar_item} />
+                    </a>
                 </div>
             </div>
             <ContactPageMain />

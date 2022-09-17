@@ -7,6 +7,7 @@
 }
 
 .item:last-of-type {
+    position: relative;
     background-color: var(--color-6);
     color: white;
     display: flex;
@@ -44,7 +45,8 @@
     height: 100%;
 }
 
-.form_container input {
+.form_container input,
+.form_container textarea {
     height: 65px;
     background-color: var(--color-2);
     border: 2px solid var(--color-6);
@@ -54,22 +56,39 @@
     color: #747474;
 }
 
+.form_container input::placeholder,
+.form_container textarea::placeholder {
+    color: #d5d5d5;
+}
+
+/* .form_container input:invalid {
+    border-color: var(--color-5);
+    background-color: rgba(212, 66, 66, 0.174);
+} */
+
+.form_container input:invalid {
+    border-color: var(--color-5);
+}
+
+.form_container textarea:invalid {
+    border-color: var(--color-5);
+}
+
+.form_container input:focus,
+.form_container textarea:focus {
+    border-width: 3px;
+}
+
 .form_container label {
     font-weight: var(--fw-500);
     font-size: var(--fs-32);
     line-height: 40px;
 }
 
-.form_container input::placeholder {
-    color: #d5d5d5;
-}
-
-.form_container > input:last-of-type {
+.form_container > textarea {
     height: 200px;
-}
-
-.form_container input:focus {
-    border-width: 3px;
+    width: 100%;
+    resize: none;
 }
 
 .submit_button {
@@ -83,6 +102,10 @@
     cursor: pointer;
 }
 
+.submit_button:active {
+    background-color: hsl(0, 0%, 20%);
+}
+
 .names_container {
     display: flex;
     gap: 20px;
@@ -92,4 +115,14 @@
     width: 50%;
     display: flex;
     flex-direction: column;
+}
+
+.red_cube {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 0;
+    right: 100%;
+    transform: translateX(40%);
+    background-color: var(--color-5);
 }
