@@ -17,12 +17,12 @@ export default async function handler(req, res) {
     const session = await getAuthenticatedUser(req);
 
     switch (method) {
-        case "GET_ALL_CHAPTERS":
+        case "GET":
             try {
                 const {
-                    chapter,
+                    title,
                     sort
-                } = req.query;
+                } = req.query
                 let {
                     limit,
                     page
@@ -32,12 +32,12 @@ export default async function handler(req, res) {
                     limit = MAX_LIMIT;
                 }
 
-                const query = Chapter.find();
+                const query = Chapter.find({});
 
-                if (chapter) {
+                if (title) {
                     query.find({
-                        chapter: {
-                            $regex: chapter,
+                        title: {
+                            $regex: title,
                             $options: 'gi'
                         }
                     });;
@@ -56,7 +56,7 @@ export default async function handler(req, res) {
                 const results = chapters.length;
                 const totalResults = query.clone().count();
 
-                res.status(200).json({
+                res.status(201).json({
                     success: true,
                     totalResults: totalResults,
                     results: results,
@@ -67,7 +67,7 @@ export default async function handler(req, res) {
             };
             break;
 
-        case 'CREATE_CHAPTER':
+        case 'POST':
             try {
                 if (!session) {
                     throw new AuthorizationError('Pls login to create a new chapter');
@@ -88,7 +88,7 @@ export default async function handler(req, res) {
         default:
             try {
                 const url = req.url;
-                throw new NotFoundError(`Could not find method for the route ${url}`);
+                throw new NotFoundError(`Could not find method for the route '${url}'`);
             } catch (err) {
                 errorHandler(err, res)
             }

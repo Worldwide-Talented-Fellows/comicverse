@@ -22,12 +22,12 @@ export default async function handler(req, res) {
 
     switch (method) {
 
-        case 'GET_CHAPTER':
+        case 'GET':
             try {
                 const chapter = await Chapter.findById(id);
                 if (chapter) {
                     res.status(200).json({
-                        sucess: true,
+                        success: true,
                         data: chapter
                     })
                 } else {
@@ -39,7 +39,7 @@ export default async function handler(req, res) {
             }
             break;
 
-        case 'UPDATE_CHAPTER':
+        case 'PUT':
             try {
                 const updChapter = req.body;
                 const updatedChapter = Chapter.findByIdAndUpdate(id, updChapter, {
@@ -53,8 +53,8 @@ export default async function handler(req, res) {
 
                 if (updatedChapter) {
                     res.status(200).json({
-                        sucess: true,
-                        message: `Chapter with the id ${id} was updated sucessfully`,
+                        success: true,
+                        message: `Chapter with the id ${id} was updated successfully`,
                         data: updatedChapter
                     })
                 } else {
@@ -66,7 +66,7 @@ export default async function handler(req, res) {
             }
             break;
 
-        case 'DELETE_CHAPTER':
+        case 'DELETE':
             try {
                 const deletedChapter = Chapter.findByIdAndDelete(id);
 
@@ -76,8 +76,8 @@ export default async function handler(req, res) {
 
                 if (deletedChapter) {
                     res.status(200).json({
-                        sucess: true,
-                        message: `Sucessfully deleted chapter with the id ${id}`,
+                        success: true,
+                        message: `Successfully deleted chapter with the id ${id}`,
                         data: {deletedChapter}
                     });
                 } else {
