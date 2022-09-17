@@ -40,9 +40,9 @@
 .form_container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    gap: 20px;
+    justify-content: space-between;
     margin: 0 50px;
+    padding-top: 15px;
     height: 100%;
     font-family: 'Poppins';
 }
@@ -53,6 +53,7 @@
     border: 2px solid #1e1e1e;
     border-radius: 5px;
     color: black;
+    font-size: 20px;
 }
 
 .form_container label {
@@ -67,7 +68,6 @@
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
     color: #d5d5d5;
 }
 
