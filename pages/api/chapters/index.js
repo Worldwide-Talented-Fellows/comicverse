@@ -49,7 +49,26 @@ export default async function handler(req, res) {
             }
             catch (err) {
                 errorHandler(err, res);
-            }
+            };
         break;
-        }
+
+        case 'CREATE_CHAPTER':
+            try {
+                if (!session) {
+                    throw new AuthorizationError('Pls login to create a new chapter');
+                }
+                const chapter = await Chapter.create(req.body);
+
+                res.status(200).json({
+                    success: true,
+                    message: 'Successfully created a new chapter',	
+                    data: chapter
+                });
+
+            }
+            catch (err) {
+                errorHandler(err, res);
+            };
+        break;
+    }
 }
