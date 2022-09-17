@@ -74,7 +74,7 @@ export default async function handler(req, res) {
                 }
                 const chapter = await Chapter.create(req.body);
 
-                res.status(200).json({
+                res.status(201).json({
                     success: true,
                     message: 'Successfully created a new chapter',
                     data: chapter
