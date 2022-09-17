@@ -30,7 +30,14 @@
 - ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
 ## Backend
+- ![NodeJS](https://img.shields.io/badge/NodeJS-%233C873A.svg?style=for-the-badge&logo=node.js&logoColor=white)
+
+  
+## Database
 - ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+  
+## Project Management and Version Control
+- ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
 # Project Roadmap
 

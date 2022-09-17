@@ -1,0 +1,128 @@
+.container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 10% 60% 30%;
+    height: 622.39px;
+    z-index: 2;
+}
+
+.item:last-of-type {
+    position: relative;
+    background-color: var(--color-6);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 46px;
+    padding: 91px 63px;
+}
+
+.item:last-of-type > h3 {
+    font-family: Poppins;
+    font-size: var(--fs-28);
+    line-height: 36px;
+    letter-spacing: 0em;
+}
+
+.item:last-of-type p {
+    font-family: Poppins;
+    font-weight: var(--fw-500);
+    line-height: 36px;
+    letter-spacing: 0em;
+}
+
+.paragraph_div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.form_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 50px;
+    padding-top: 50px;
+    height: 100%;
+}
+
+.form_container input,
+.form_container textarea {
+    height: 65px;
+    background-color: var(--color-2);
+    border: 2px solid var(--color-6);
+    border-radius: 5px;
+    font-size: var(--fs-20);
+    font-family: 'Poppins';
+    color: #747474;
+}
+
+.form_container input::placeholder,
+.form_container textarea::placeholder {
+    color: #d5d5d5;
+}
+
+/* .form_container input:invalid {
+    border-color: var(--color-5);
+    background-color: rgba(212, 66, 66, 0.174);
+} */
+
+.form_container input:invalid {
+    border-color: var(--color-5);
+}
+
+.form_container textarea:invalid {
+    border-color: var(--color-5);
+}
+
+.form_container input:focus,
+.form_container textarea:focus {
+    border-width: 3px;
+}
+
+.form_container label {
+    font-weight: var(--fw-500);
+    font-size: var(--fs-32);
+    line-height: 40px;
+}
+
+.form_container > textarea {
+    height: 200px;
+    width: 100%;
+    resize: none;
+}
+
+.submit_button {
+    background-color: var(--color-6);
+    width: 100%;
+    height: 52px;
+    border-radius: 5px;
+    font-weight: var(--fw-600);
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.submit_button:active {
+    background-color: hsl(0, 0%, 20%);
+}
+
+.names_container {
+    display: flex;
+    gap: 20px;
+}
+
+.names_div {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.red_cube {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 0;
+    right: 100%;
+    transform: translateX(40%);
+    background-color: var(--color-5);
+}
