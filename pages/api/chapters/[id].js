@@ -9,7 +9,7 @@ import Chapter from '../../../server/models/Chapter';
 
 
 export default async function handler(req, res) {
-    /** Pulling id and method from request */
+    /** Pulls id and method from request */
     const {
         query: {
             id
