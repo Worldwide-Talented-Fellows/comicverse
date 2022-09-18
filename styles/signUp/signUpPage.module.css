@@ -1,0 +1,38 @@
+.container {
+    background:var(  --color-7);
+ 
+   
+}
+
+.header h2 {
+    font-family: Poppins;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 60px;
+    letter-spacing: 0em;
+    text-align: center;
+    background: #d2d0d0;
+    margin: 8px 0px 8px 0px;
+}
+
+.input_forms label{
+    display: block;
+    margin-top: 10px;
+    margin-left: 346.4px;
+}
+.input_forms input{
+   
+    width: 500px;
+    margin-left: 346.9px;
+}
+.input_forms button{
+    display: block;
+    margin-left: 390px;
+    margin-top: 10px;
+ width:400px;
+ background: var(--color-3);
+ color: var(--color-2);
+ border: var(--color-3)
+
+
+}
