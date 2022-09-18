@@ -6,26 +6,94 @@ import PhoneSVG from '../../public/assets/contact_page/PhoneSVG';
 import StreetSVG from '../../public/assets/contact_page/StreetSVG';
 import TimeSVG from '../../public/assets/contact_page/TimeSVG';
 
-const contactDefault = {
+const contactInitial = {
     fname: '',
     lname: '',
     email: '',
     message: '',
+    fnameError: '',
+    lnameError: '',
+    emailError: '',
+    messageError: '',
 };
 
 const ContactPageMain = () => {
-    const [contact, setContact] = useState(contactDefault);
+    const [contact, setContact] = useState(contactInitial);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setContact((prevState) => ({ ...prevState, [name]: value }));
+        setContact((prevState) => ({
+            ...prevState,
+            [name]: value,
+        }));
     };
+
+    const whiteSpaceValidation = (str) => {
+        return /\s/.test(str);
+    };
+
+    const validate = () => {
+        const errors = {
+            fnameError: '',
+            lnameError: '',
+            emailError: '',
+            messageError: '',
+        };
+
+        Object.keys(errors).forEach((keyError) => {
+            const key = keyError.replace('Error', '');
+            // console.log(contact[key]);
+            // console.log(keyError);
+            // const contactKey = contact[key];
+            if (whiteSpaceValidation(contact[key])) {
+                errors[keyError] = "Can't have white spaces";
+            }
+        });
+
+        // if (whiteSpaceValidation(contact.fname)) {
+        //     errors.fnameError = "Can't have white spaces";
+        // }
+
+        // if (whiteSpaceValidation(contact.lname)) {
+        //     errors.lnameError = "Can't have white spaces";
+        // }
+
+        // if (whiteSpaceValidation(contact.email)) {
+        //     errors.emailError = "Can't have white spaces";
+        // }
+
+        // if (!contact.email.includes('@')) {
+        //     emailError = 'invalid email';
+        // }
+
+        if (
+            errors.fnameError ||
+            errors.lnameError ||
+            errors.emailError ||
+            errors.messageError
+        ) {
+            setContact((prevState) => ({
+                ...prevState,
+                fnameError: errors.fnameError,
+                lnameError: errors.lnameError,
+                emailError: errors.emailError,
+                messageError: errors.messageError,
+            }));
+            return false;
+        }
+
+        return true;
+    };
+    // console.log(/\s/.test(' str'));
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(contact);
+        const isValid = validate();
 
-        setContact(contactDefault);
+        if (isValid) {
+            console.log(contact);
+            setContact(contactInitial);
+        }
     };
 
     return (
@@ -47,9 +115,12 @@ const ContactPageMain = () => {
                                 placeholder="John"
                                 value={contact.fname}
                                 onChange={(e) => handleChange(e)}
-                                minLength={3}
-                                required
+                                // minLength={3}
+                                // required
                             />
+                            <div style={{ color: 'red', fontSize: 14 }}>
+                                {contact.fnameError}
+                            </div>
                         </div>
 
                         <div className={styles.names_div}>
@@ -61,22 +132,28 @@ const ContactPageMain = () => {
                                 placeholder="Doe"
                                 value={contact.lname}
                                 onChange={(e) => handleChange(e)}
-                                minLength={3}
-                                required
+                                // minLength={3}
+                                // required
                             />
+                            <div style={{ color: 'red', fontSize: 14 }}>
+                                {contact.lnameError}
+                            </div>
                         </div>
                     </div>
 
                     <label htmlFor="email">Email</label>
                     <input
-                        type="email"
+                        // type="email"
                         id="email"
                         name="email"
                         placeholder="JohnDoe@gmail.com"
                         value={contact.email}
                         onChange={(e) => handleChange(e)}
-                        required
+                        // required
                     />
+                    <div style={{ color: 'red', fontSize: 14 }}>
+                        {contact.emailError}
+                    </div>
 
                     <label htmlFor="message">Message</label>
                     <textarea
@@ -88,8 +165,12 @@ const ContactPageMain = () => {
                         onChange={(e) => handleChange(e)}
                         className={styles.message_area}
                         maxLength={700}
-                        required
+                        // minLength={15}
+                        // required
                     />
+                    <div style={{ color: 'red', fontSize: 14 }}>
+                        {contact.messageError}
+                    </div>
                     <div>{contact.message.length} of 700</div>
 
                     <button type="submit" className={styles.submit_button}>

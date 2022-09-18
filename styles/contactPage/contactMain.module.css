@@ -66,11 +66,11 @@
     background-color: rgba(212, 66, 66, 0.174);
 } */
 
-.form_container input:invalid {
+.form_container input:not([value='']):invalid {
     border-color: var(--color-5);
 }
 
-.form_container textarea:invalid {
+.form_container textarea:not(:placeholder-shown):invalid {
     border-color: var(--color-5);
 }
 
