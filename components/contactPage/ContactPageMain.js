@@ -11,14 +11,16 @@ const contactInitial = {
     lname: '',
     email: '',
     message: '',
-    fnameError: '',
-    lnameError: '',
-    emailError: '',
-    messageError: '',
 };
 
 const ContactPageMain = () => {
     const [contact, setContact] = useState(contactInitial);
+    const [isDirty, setIsDirty] = useState({
+        fname: false,
+        lname: false,
+        email: false,
+        message: false,
+    });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -28,72 +30,18 @@ const ContactPageMain = () => {
         }));
     };
 
-    const whiteSpaceValidation = (str) => {
-        return /\s/.test(str);
+    const handleChangeDirty = (e) => {
+        const { name } = e.target;
+        setIsDirty((prevState) => ({
+            ...prevState,
+            [name]: true,
+        }));
     };
-
-    const validate = () => {
-        const errors = {
-            fnameError: '',
-            lnameError: '',
-            emailError: '',
-            messageError: '',
-        };
-
-        Object.keys(errors).forEach((keyError) => {
-            const key = keyError.replace('Error', '');
-            // console.log(contact[key]);
-            // console.log(keyError);
-            // const contactKey = contact[key];
-            if (whiteSpaceValidation(contact[key])) {
-                errors[keyError] = "Can't have white spaces";
-            }
-        });
-
-        // if (whiteSpaceValidation(contact.fname)) {
-        //     errors.fnameError = "Can't have white spaces";
-        // }
-
-        // if (whiteSpaceValidation(contact.lname)) {
-        //     errors.lnameError = "Can't have white spaces";
-        // }
-
-        // if (whiteSpaceValidation(contact.email)) {
-        //     errors.emailError = "Can't have white spaces";
-        // }
-
-        // if (!contact.email.includes('@')) {
-        //     emailError = 'invalid email';
-        // }
-
-        if (
-            errors.fnameError ||
-            errors.lnameError ||
-            errors.emailError ||
-            errors.messageError
-        ) {
-            setContact((prevState) => ({
-                ...prevState,
-                fnameError: errors.fnameError,
-                lnameError: errors.lnameError,
-                emailError: errors.emailError,
-                messageError: errors.messageError,
-            }));
-            return false;
-        }
-
-        return true;
-    };
-    // console.log(/\s/.test(' str'));
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const isValid = validate();
-
-        if (isValid) {
-            console.log(contact);
-            setContact(contactInitial);
-        }
+        console.log(contact);
+        setContact(contactInitial);
     };
 
     return (
@@ -115,12 +63,15 @@ const ContactPageMain = () => {
                                 placeholder="John"
                                 value={contact.fname}
                                 onChange={(e) => handleChange(e)}
-                                // minLength={3}
-                                // required
+                                onBlur={(e) => handleChangeDirty(e)}
+                                pattern="^[A-Za-z]{3,16}$"
+                                required
+                                focused={isDirty.fname.toString()}
                             />
-                            <div style={{ color: 'red', fontSize: 14 }}>
-                                {contact.fnameError}
-                            </div>
+                            <span className={styles.error}>
+                                Name should not include any special characters
+                                min length 3, max length 16
+                            </span>
                         </div>
 
                         <div className={styles.names_div}>
@@ -132,28 +83,31 @@ const ContactPageMain = () => {
                                 placeholder="Doe"
                                 value={contact.lname}
                                 onChange={(e) => handleChange(e)}
-                                // minLength={3}
-                                // required
+                                onBlur={(e) => handleChangeDirty(e)}
+                                pattern="^[A-Za-z]{3,16}$"
+                                required
+                                focused={isDirty.lname.toString()}
                             />
-                            <div style={{ color: 'red', fontSize: 14 }}>
-                                {contact.lnameError}
-                            </div>
+                            <span className={styles.error}>
+                                Last Name should not include any special
+                                characters min length 3, max length 16
+                            </span>
                         </div>
                     </div>
 
                     <label htmlFor="email">Email</label>
                     <input
-                        // type="email"
+                        type="email"
                         id="email"
                         name="email"
                         placeholder="JohnDoe@gmail.com"
                         value={contact.email}
                         onChange={(e) => handleChange(e)}
-                        // required
+                        onBlur={(e) => handleChangeDirty(e)}
+                        required
+                        focused={isDirty.email.toString()}
                     />
-                    <div style={{ color: 'red', fontSize: 14 }}>
-                        {contact.emailError}
-                    </div>
+                    <span className={styles.error}>Invalid email</span>
 
                     <label htmlFor="message">Message</label>
                     <textarea
@@ -163,14 +117,14 @@ const ContactPageMain = () => {
                         placeholder="Your Message"
                         value={contact.message}
                         onChange={(e) => handleChange(e)}
+                        onBlur={(e) => handleChangeDirty(e)}
                         className={styles.message_area}
                         maxLength={700}
-                        // minLength={15}
-                        // required
+                        minLength={15}
+                        required
+                        focused={isDirty.message.toString()}
                     />
-                    <div style={{ color: 'red', fontSize: 14 }}>
-                        {contact.messageError}
-                    </div>
+                    <div className={styles.error}>Minimum 15 letters</div>
                     <div>{contact.message.length} of 700</div>
 
                     <button type="submit" className={styles.submit_button}>
