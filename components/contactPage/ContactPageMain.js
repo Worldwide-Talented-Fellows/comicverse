@@ -69,8 +69,8 @@ const ContactPageMain = () => {
                                 focused={isDirty.fname.toString()}
                             />
                             <span className={styles.error}>
-                                Name should not include any special characters
-                                min length 3, max length 16
+                                *Required field (no special characters, white
+                                spaces, min length 3, max length 16)
                             </span>
                         </div>
 
@@ -89,8 +89,8 @@ const ContactPageMain = () => {
                                 focused={isDirty.lname.toString()}
                             />
                             <span className={styles.error}>
-                                Last Name should not include any special
-                                characters min length 3, max length 16
+                                *Required field (no special characters, white
+                                spaces, min length 3, max length 16)
                             </span>
                         </div>
                     </div>

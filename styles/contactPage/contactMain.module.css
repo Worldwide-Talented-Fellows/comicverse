@@ -65,7 +65,6 @@
     color: red;
     font-size: 12px;
     display: none;
-    /* white-space: nowrap; */
 }
 
 .form_container input:invalid[focused='true'] ~ span,
