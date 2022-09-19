@@ -1,4 +1,16 @@
 /* placeholder styles */
+
+.title {
+    font-size: 48px;
+    font-weight: 400;
+    border-bottom: 1px solid #8d99ae;
+    padding: 16px;
+}
+
+.container {
+    padding: 0px 0px 0px 48px;
+}
+
 .imageContainer {
     display: flex;
     gap: 10px;
@@ -8,8 +20,57 @@
 }
 
 .image {
-    width: 100px;
-    height: 100px;
-    background-color: gray;
+    width: 192px;
+    height: 194px;
+    background: #d9d9d9;
     flex-shrink: 0;
+}
+
+.paragraph {
+    font-size: 18px;
+    line-height: 150%;
+    width: 75%;
+    font-weight: 400;
+    margin: 40px 0px 40px 0px;
+}
+
+.aboutAuthorTitle {
+    font-weight: 400;
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.primaryButton {
+    background: #2b2d42;
+    padding: 15px 60px;
+    border-radius: 8px;
+    margin-left: 30px;
+}
+
+.secondaryButton {
+    background: #ffffff;
+    color: #2b2d42;
+    border: 3px solid #2b2d42;
+    padding: 15px 15px;
+    border-radius: 8px;
+}
+
+.tertiaryButton {
+    background: none;
+    color: #1a1a1a;
+    border: none;
+    display: flex;
+    font-size: 18px;
+    align-items: center;
+}
+
+.tertiaryButton span {
+    margin-left: 10px;
+}
+
+.buttonGroup {
+    margin: 42px 0px 42px 0px;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
 }
