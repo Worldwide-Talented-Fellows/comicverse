@@ -41,17 +41,22 @@ export default async function handler(req, res) {
                 if (!session) {
                     return res
                         .status(401)
-                        .json({ errorsMessage: 'unauthorized' });
+                        .json({ errorsMessage: 'Unauthorized' });
                 }
 
-                if (
-                    session.user.role !== 'moderator' ||
-                    session.user.role !== 'author'
-                ) {
-                    return;
+                const character = await CharacterModel.findById(id);
+
+                if (!character) {
+                    return res.status(404).send('No character with such id');
                 }
 
-                await CharacterModel.findByIdAndDelete(id);
+                const idOfAuthor = character.author.valueOf();
+
+                if (session.user._id !== idOfAuthor) {
+                    return res.status(403).send("You can't do that");
+                }
+
+                await CharacterModel.deleteOne(character);
                 return res.status(200).send('deleted');
             } catch (error) {
                 return res.status(404).json({ errorMessage: error.message });
