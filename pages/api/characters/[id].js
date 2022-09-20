@@ -11,6 +11,8 @@ export default async function handler(req, res) {
 
     const session = await getAuthenticatedUser(req);
 
+    const checkFunc = (req) => {};
+
     switch (method) {
         case 'GET':
             try {
@@ -24,20 +26,39 @@ export default async function handler(req, res) {
 
         case 'PUT':
             try {
-                const updatedFields = req.body;
-                const updatedCharacter = await CharacterModel.findByIdAndUpdate(
-                    id,
-                    updatedFields,
-                    { new: true, runValidators: true }
-                );
-                return res.json(updatedCharacter);
+                if (!session) {
+                    return res
+                        .status(401)
+                        .json({ errorsMessage: 'Unauthorized' });
+                }
+
+                const fieldsToUpdate = req.body;
+                const character = await CharacterModel.findById(id);
+
+                if (!character) {
+                    return res.status(404).send('No character with such id');
+                }
+
+                const idOfAuthor = character.author.valueOf();
+
+                if (
+                    session.user._id === idOfAuthor ||
+                    session.user.role === 'moderator'
+                ) {
+                    await CharacterModel.findByIdAndUpdate(id, fieldsToUpdate, {
+                        new: true,
+                        runValidators: true,
+                    });
+                    return res.status(200).send('updated');
+                }
+
+                return res.status(403).send("You can't do that");
             } catch (error) {
                 return res.status(404).json({ errorMessage: error.message });
             }
 
         case 'DELETE':
             try {
-                console.log(session);
                 if (!session) {
                     return res
                         .status(401)
@@ -52,12 +73,15 @@ export default async function handler(req, res) {
 
                 const idOfAuthor = character.author.valueOf();
 
-                if (session.user._id !== idOfAuthor) {
-                    return res.status(403).send("You can't do that");
+                if (
+                    session.user._id === idOfAuthor ||
+                    session.user.role === 'moderator'
+                ) {
+                    await CharacterModel.deleteOne(character);
+                    return res.status(200).send('deleted');
                 }
 
-                await CharacterModel.deleteOne(character);
-                return res.status(200).send('deleted');
+                return res.status(403).send("You can't do that");
             } catch (error) {
                 return res.status(404).json({ errorMessage: error.message });
             }
