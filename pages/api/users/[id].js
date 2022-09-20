@@ -1,7 +1,6 @@
 import errorHandler from '../../../server/helpers/error-handler';
 import {
     NotFoundError,
-    RestrictedMethodError,
     AuthorizationError,
 } from '../../../server/helpers/errors';
 import dbConnect from '../../../server/lib/dbConnect';
@@ -68,7 +67,7 @@ export default async function handler(req, res) {
 
         default:
             return errorHandler(
-                new RestrictedMethodError('Method not found'),
+                new NotFoundError('Method not found'),
                 res
             );
     }

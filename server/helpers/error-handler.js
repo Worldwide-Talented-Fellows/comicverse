@@ -28,13 +28,6 @@ const errorMap = {
             error.message ?? 'Unauthorized request'
         );
     },
-    RestrictedMethodError: (error, res) => {
-        return sendErrorResponse(
-            res,
-            405,
-            error.message ?? 'Method Not Allowed'
-        );
-    },
     MissingCredentialsError: (error, res) => {
         return sendErrorResponse(
             res,

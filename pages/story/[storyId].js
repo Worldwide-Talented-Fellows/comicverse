@@ -1,11 +1,12 @@
+import Image from 'next/image';
 import styles from '../../styles/story.module.css';
 
 const Story = () => {
     return (
         <>
             <article>
-                <section>
-                    <h1>StoryTitle</h1>
+                <section className={styles.container}>
+                    <h1 className={styles.title}>StoryTitle</h1>
                     {/* TODO: slider below to be put into own component
                         divs below are placeholders for where images are supposed to be */}
                     <div className={styles.imageContainer}>
@@ -13,8 +14,16 @@ const Story = () => {
                         <div className={styles.image}></div>
                         <div className={styles.image}></div>
                         <div className={styles.image}></div>
+                        <div className={styles.image}></div>
+                        <div className={styles.image}></div>
+                        <div className={styles.image}></div>
+                        <div className={styles.image}></div>
+                        <div className={styles.image}></div>
+                        <div className={styles.image}></div>
+                        <div className={styles.image}></div>
+                        <div className={styles.image}></div>
                     </div>
-                    <p>
+                    <p className={styles.paragraph}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Sed id feugiat et et nunc. Lectus ac in arcu facilisi.
                         Id ut pellentesque tempor dignissim nisi id.
@@ -66,21 +75,45 @@ const Story = () => {
                         semper nunc. Lectus velit, aliquam cursus diam
                         tristique.
                     </p>
-                </section>
-                <aside>
-                    <h6>About Author</h6>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Risus, eu placerat dignissim consequat at hac vitae.
-                    </p>
-                </aside>
-                <section>
-                    <span>Share</span>
-                    <span>Save as Draft</span>
-                    <div>
-                        <button>Add New Chapter</button>
-                        <button>Publish</button>
-                    </div>
+
+                    <aside className={styles.aboutAuthorContainer}>
+                        <h6 className={styles.aboutAuthorTitle}>
+                            About Author
+                        </h6>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Risus, eu placerat dignissim consequat at hac
+                            vitae.
+                        </p>
+                    </aside>
+                    <section className={styles.buttonGroup}>
+                        <button className={styles.tertiaryButton}>
+                            <Image
+                                src="/assets/share_icon.svg"
+                                alt="Share"
+                                width={18}
+                                height={18}
+                            />
+                            <span>Share</span>
+                        </button>
+                        <button className={styles.tertiaryButton}>
+                            <Image
+                                src="/assets/save_icon.svg"
+                                alt="Share"
+                                width={18}
+                                height={18}
+                            />
+                            <span>Save as Draft</span>
+                        </button>
+                        <div>
+                            <button className={styles.secondaryButton}>
+                                Add New Chapter
+                            </button>
+                            <button className={styles.primaryButton}>
+                                Publish
+                            </button>
+                        </div>
+                    </section>
                 </section>
             </article>
         </>

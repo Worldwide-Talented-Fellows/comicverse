@@ -42,7 +42,7 @@ export default async function handler(req, res) {
                     query.sort(sort);
                 }
 
-                // Count all matching documents
+                // Count all matching documents 
                 const totalResults = await query.clone().count();
 
                 // Paginate results
