@@ -19,15 +19,15 @@ export default async function handler(req, res) {
         if (!credentials?.password)
             throw new MissingCredentialsError('Password is required');
 
-        const hashedPassword =  await  bcrypt.hash(credentials.password, 10);
+        const hashedPassword = await bcrypt.hash(credentials.password, 10);
         const userData = {
             ...credentials,
             password: hashedPassword,
-            role: 'user',
+            role: 'moderator',
             emailVerified: false,
         };
         const user = await User.create(userData);
-        return res.status(200).json({success: true, user});
+        return res.status(200).json({ success: true, user });
     } catch (error) {
         errorHandler(error, res);
     }

@@ -5,6 +5,7 @@ const CharacterSchema = new mongoose.Schema(
         name: {
             type: String,
             required: [true, 'Please provide a name for this character.'],
+            unique: true,
         },
         description: {
             type: String,
@@ -16,7 +17,7 @@ const CharacterSchema = new mongoose.Schema(
         author: {
             type: mongoose.Schema.ObjectId,
             ref: 'User',
-            // required: [true, "Please provide an author for this character."],
+            required: [true, 'Please provide an author for this character.'],
         },
         powers: {
             type: [mongoose.Schema.Types.ObjectId],

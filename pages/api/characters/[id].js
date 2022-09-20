@@ -1,50 +1,95 @@
-import dbConnect from "../../../server/lib/dbConnect";
-import CharacterModel from "../../../server/models/Character";
+import getAuthenticatedUser from '../../../server/helpers/auth/token';
+import dbConnect from '../../../server/lib/dbConnect';
+import CharacterModel from '../../../server/models/Character';
 
 export default async function handler(req, res) {
-  await dbConnect();
-  const {
-    method,
-    query: { id },
-  } = req;
+    await dbConnect();
+    const {
+        method,
+        query: { id },
+    } = req;
 
-  switch (method) {
-    case "GET":
-      try {
-        const character = await CharacterModel.findById(id);
-        return res.json(character);
-      } catch (error) {
-        return res
-          .status(404)
-          .json({ errorMessage: "No character with such id" });
-      }
+    const session = await getAuthenticatedUser(req);
 
-    case "PUT":
-      try {
-        const updatedFields = req.body;
-        const updatedCharacter = await CharacterModel.findByIdAndUpdate(
-          id,
-          updatedFields,
-          { new: true, runValidators: true }
-        );
-        return res.json(updatedCharacter);
-      } catch (error) {
-        return res.status(404).json({ errorMessage: error.message });
-      }
+    const checkFunc = (req) => {};
 
-    case "DELETE":
-      try {
-        const deletedCharacter = await CharacterModel.findByIdAndDelete(id);
+    switch (method) {
+        case 'GET':
+            try {
+                const character = await CharacterModel.findById(id);
+                return res.json(character);
+            } catch (error) {
+                return res
+                    .status(404)
+                    .json({ errorMessage: 'No character with such id' });
+            }
 
-        return res.status(202);
-      } catch (error) {
-        return res.status(404).json({ errorMessage: error.message });
-      }
+        case 'PUT':
+            try {
+                if (!session) {
+                    return res
+                        .status(401)
+                        .json({ errorsMessage: 'Unauthorized' });
+                }
 
-    default:
-      res.status(405).json({
-        errorMessage: `No such method for this url: ${req.url}.`,
-      });
-      break;
-  }
+                const fieldsToUpdate = req.body;
+                const character = await CharacterModel.findById(id);
+
+                if (!character) {
+                    return res.status(404).send('No character with such id');
+                }
+
+                const idOfAuthor = character.author.valueOf();
+
+                if (
+                    session.user._id === idOfAuthor ||
+                    session.user.role === 'moderator'
+                ) {
+                    await CharacterModel.findByIdAndUpdate(id, fieldsToUpdate, {
+                        new: true,
+                        runValidators: true,
+                    });
+                    return res.status(200).send('updated');
+                }
+
+                return res.status(403).send("You can't do that");
+            } catch (error) {
+                return res.status(404).json({ errorMessage: error.message });
+            }
+
+        case 'DELETE':
+            try {
+                if (!session) {
+                    return res
+                        .status(401)
+                        .json({ errorsMessage: 'Unauthorized' });
+                }
+
+                const character = await CharacterModel.findById(id);
+
+                if (!character) {
+                    return res.status(404).send('No character with such id');
+                }
+
+                const idOfAuthor = character.author.valueOf();
+
+                if (
+                    session.user._id === idOfAuthor ||
+                    session.user.role === 'moderator'
+                ) {
+                    await CharacterModel.deleteOne(character);
+                    return res.status(200).send('deleted');
+                }
+
+                return res.status(403).send("You can't do that");
+            } catch (error) {
+                return res.status(404).json({ errorMessage: error.message });
+            }
+
+        default:
+            res.status(405).json({
+                errorMessage: `No such method for this url: ${req.url}.`,
+            });
+            break;
+    }
 }
