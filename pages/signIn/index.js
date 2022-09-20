@@ -16,12 +16,14 @@ const SignInPage = () => {
                         type="text"
                         className={styles.form_Input}
                         placeholder="E.g JohnDoe@gmail.com"
+                        style={{ color: 'black' }}
                     />
                     <label htmlFor="">Password</label>
                     <input
                         type="text"
                         placeholder="E.g John Joe95"
                         className={styles.form_Input}
+                        style={{ color: 'black' }}
                     />
                     <button className={styles.login_btn}>Login</button>
                     <a href="#" className={styles.form_forgotPassword}>
