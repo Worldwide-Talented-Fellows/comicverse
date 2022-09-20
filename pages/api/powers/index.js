@@ -66,6 +66,7 @@ export default async function handler(req, res) {
         case 'POST':
             /* POST /api/powers => Add a power to database */
             try {
+                console.log('SESSION', session); //!
                 if (!session) {
                     throw new AuthorizationError(
                         'You have to be logged in to do that.'
