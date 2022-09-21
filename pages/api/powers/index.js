@@ -1,5 +1,6 @@
-import { unstable_getServerSession } from 'next-auth';
+// import { unstable_getServerSession } from 'next-auth';
 import { DEFAULT_LIMIT, MAX_LIMIT } from '../../../server/constants/search';
+import getAuthenticatedUser from '../../../server/helpers/auth/token';
 import errorHandler from '../../../server/helpers/error-handler';
 import {
     AuthorizationError,
@@ -14,7 +15,7 @@ export default async function handler(req, res) {
 
     await dbConnect();
 
-    const session = await unstable_getServerSession(req, res, authOptions);
+    const session = await getAuthenticatedUser(req);
 
     switch (method) {
         case 'GET':
@@ -42,7 +43,7 @@ export default async function handler(req, res) {
                     query.sort(sort);
                 }
 
-                // Count all matching documents 
+                // Count all matching documents
                 const totalResults = await query.clone().count();
 
                 // Paginate results
@@ -66,6 +67,7 @@ export default async function handler(req, res) {
         case 'POST':
             /* POST /api/powers => Add a power to database */
             try {
+                console.log('SESSION', session); //!
                 if (!session) {
                     throw new AuthorizationError(
                         'You have to be logged in to do that.'
