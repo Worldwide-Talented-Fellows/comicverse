@@ -6,6 +6,12 @@ const CharacterSchema = new mongoose.Schema(
             type: String,
             required: [true, 'Please provide a name for this character.'],
             unique: true,
+            minlength: [3, 'Should be more than 3 letters'],
+            // validate: {
+            //     validator: (val) =>
+            //         validator.isAlpha(val, ['en-US'], { ignore: ' ' }),
+            //     message: 'A tour must only  contain characters',
+            // },
         },
         description: {
             type: String,
