@@ -1,6 +1,13 @@
-import getAuthenticatedUser from '../../../server/helpers/auth/token';
 import dbConnect from '../../../server/lib/dbConnect';
 import CharacterModel from '../../../server/models/Character';
+
+import getAuthenticatedUser from '../../../server/helpers/auth/token';
+import errorHandler from '../../../server/helpers/error-handler';
+import {
+    AuthorizationError,
+    NotFoundError,
+    ForbiddenError,
+} from '../../../server/helpers/errors';
 
 export default async function handler(req, res) {
     await dbConnect();
@@ -9,9 +16,23 @@ export default async function handler(req, res) {
         query: { id },
     } = req;
 
-    const session = await getAuthenticatedUser(req);
+    const checkFunc = async (id) => {
+        if (!session) {
+            throw new AuthorizationError(
+                'You have to be logged in to do that.'
+            );
+        }
 
-    const checkFunc = (req) => {};
+        const character = await CharacterModel.findById(id);
+
+        if (!character) {
+            throw new NotFoundError('No character with such data');
+        }
+
+        return character;
+    };
+
+    const session = await getAuthenticatedUser(req);
 
     switch (method) {
         case 'GET':
@@ -26,64 +47,51 @@ export default async function handler(req, res) {
 
         case 'PUT':
             try {
-                if (!session) {
-                    return res
-                        .status(401)
-                        .json({ errorsMessage: 'Unauthorized' });
-                }
-
                 const fieldsToUpdate = req.body;
-                const character = await CharacterModel.findById(id);
 
-                if (!character) {
-                    return res.status(404).send('No character with such id');
-                }
+                const character = await checkFunc(id);
 
                 const idOfAuthor = character.author.valueOf();
 
                 if (
                     session.user._id === idOfAuthor ||
-                    session.user.role === 'moderator'
+                    session.user.role === 'moderator' ||
+                    session.user.role === 'admin'
                 ) {
                     await CharacterModel.findByIdAndUpdate(id, fieldsToUpdate, {
                         new: true,
                         runValidators: true,
                     });
-                    return res.status(200).send('updated');
+                    return res.status(200).json({ message: 'updated' });
                 }
 
-                return res.status(403).send("You can't do that");
+                throw new ForbiddenError(
+                    'You dont have permissions to do that'
+                );
             } catch (error) {
-                return res.status(404).json({ errorMessage: error.message });
+                return errorHandler(error, res);
             }
 
         case 'DELETE':
             try {
-                if (!session) {
-                    return res
-                        .status(401)
-                        .json({ errorsMessage: 'Unauthorized' });
-                }
-
-                const character = await CharacterModel.findById(id);
-
-                if (!character) {
-                    return res.status(404).send('No character with such id');
-                }
+                const character = await checkFunc(id);
 
                 const idOfAuthor = character.author.valueOf();
 
                 if (
                     session.user._id === idOfAuthor ||
-                    session.user.role === 'moderator'
+                    session.user.role === 'moderator' ||
+                    session.user.role === 'admin'
                 ) {
                     await CharacterModel.deleteOne(character);
-                    return res.status(200).send('deleted');
+                    return res.status(200).json({ message: 'deleted' });
                 }
 
-                return res.status(403).send("You can't do that");
+                throw new ForbiddenError(
+                    'You dont have permissions to do that'
+                );
             } catch (error) {
-                return res.status(404).json({ errorMessage: error.message });
+                return errorHandler(error, res);
             }
 
         default:
