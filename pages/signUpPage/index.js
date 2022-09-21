@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import styles from '../../styles/signUp/signUpPage.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -8,6 +9,11 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 
 function signUp() {
+const [name, setName] = useState("");
+const [email, setEmail] = useState()
+const [password, setPassword] = useState()
+const [confirmPassword, setconfirmPassword] = useState()
+console.log("name:", name)
     return (
         <div className={styles.container}>
             <h2>Create an account</h2>
@@ -21,6 +27,8 @@ function signUp() {
                     type="text"
                     id="first"
                     name="first"
+                    value={name}
+                    onChange= {({target})=> setName(target?.value)}
                     placeholder="e.g John Doe"
                     required
                 />
@@ -29,6 +37,8 @@ function signUp() {
                     type="text"
                     id="email"
                     name="email"
+                    value={email}
+                    onChange= {({target})=> setEmail(target?.value)}
                     placeholder="e.g johndoe@gmail.com"
                     required
                 />
