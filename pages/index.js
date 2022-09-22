@@ -2,6 +2,7 @@ import { useSession, signOut, signIn } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import Navbar from '../src/components/Navbar';
 import styles from '../styles/home.module.css';
+import  Button  from '../components/Button'
 export default function Home() {
     return (
         <div id="homepage">

@@ -3,6 +3,7 @@ import { errorHandler } from '../../../server/helpers/error-handler';
 import { getLimitAndSkip } from '../../../server/helpers/query-helper';
 import dbConnect from '../../../server/lib/dbConnect';
 import User from '../../../server/models/User';
+import { NotFoundError } from '../../../server/helpers/errors';
 
 export default async function handler(req, res) {
     const { method } = req;
@@ -57,7 +58,7 @@ export default async function handler(req, res) {
             }
         default:
             return errorHandler(
-                new RestrictedMethodError('Method not found'),
+                new NotFoundError('Method not found'),
                 res
             );
     }

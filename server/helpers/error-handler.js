@@ -28,18 +28,18 @@ const errorMap = {
             error.message ?? 'Unauthorized request'
         );
     },
-    RestrictedMethodError: (error, res) => {
-        return sendErrorResponse(
-            res,
-            405,
-            error.message ?? 'Method Not Allowed'
-        );
-    },
     MissingCredentialsError: (error, res) => {
         return sendErrorResponse(
             res,
             400,
             error.message ?? 'Missing credentials'
+        );
+    },
+    ForbiddenError: (error, res) => {
+        return sendErrorResponse(
+            res,
+            403,
+            error.message ?? 'You dont have permission to do this request'
         );
     },
     11000: (error, res) => {
@@ -67,7 +67,6 @@ function sendErrorResponse(
 }
 
 export default function errorHandler(error, res) {
-    console.log(error);
     if (error.name in errorMap) {
         return errorMap[error.name](error, res);
     } else if (error.code in errorMap) {

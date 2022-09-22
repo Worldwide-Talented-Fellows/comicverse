@@ -6,7 +6,7 @@ import PhoneSVG from '../../public/assets/contact_page/PhoneSVG';
 import StreetSVG from '../../public/assets/contact_page/StreetSVG';
 import TimeSVG from '../../public/assets/contact_page/TimeSVG';
 
-const contactDefault = {
+const contactInitial = {
     fname: '',
     lname: '',
     email: '',
@@ -14,18 +14,34 @@ const contactDefault = {
 };
 
 const ContactPageMain = () => {
-    const [contact, setContact] = useState(contactDefault);
+    const [contact, setContact] = useState(contactInitial);
+    const [isDirty, setIsDirty] = useState({
+        fname: false,
+        lname: false,
+        email: false,
+        message: false,
+    });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setContact((prevState) => ({ ...prevState, [name]: value }));
+        setContact((prevState) => ({
+            ...prevState,
+            [name]: value,
+        }));
+    };
+
+    const handleChangeDirty = (e) => {
+        const { name } = e.target;
+        setIsDirty((prevState) => ({
+            ...prevState,
+            [name]: true,
+        }));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(contact);
-
-        setContact(contactDefault);
+        setContact(contactInitial);
     };
 
     return (
@@ -47,9 +63,15 @@ const ContactPageMain = () => {
                                 placeholder="John"
                                 value={contact.fname}
                                 onChange={(e) => handleChange(e)}
-                                minLength={3}
+                                onBlur={(e) => handleChangeDirty(e)}
+                                pattern="^[A-Za-z]{3,16}$"
                                 required
+                                focused={isDirty.fname.toString()}
                             />
+                            <span className={styles.error}>
+                                *Required field (no special characters, white
+                                spaces, min length 3, max length 16)
+                            </span>
                         </div>
 
                         <div className={styles.names_div}>
@@ -61,9 +83,15 @@ const ContactPageMain = () => {
                                 placeholder="Doe"
                                 value={contact.lname}
                                 onChange={(e) => handleChange(e)}
-                                minLength={3}
+                                onBlur={(e) => handleChangeDirty(e)}
+                                pattern="^[A-Za-z]{3,16}$"
                                 required
+                                focused={isDirty.lname.toString()}
                             />
+                            <span className={styles.error}>
+                                *Required field (no special characters, white
+                                spaces, min length 3, max length 16)
+                            </span>
                         </div>
                     </div>
 
@@ -75,8 +103,11 @@ const ContactPageMain = () => {
                         placeholder="JohnDoe@gmail.com"
                         value={contact.email}
                         onChange={(e) => handleChange(e)}
+                        onBlur={(e) => handleChangeDirty(e)}
                         required
+                        focused={isDirty.email.toString()}
                     />
+                    <span className={styles.error}>Invalid email</span>
 
                     <label htmlFor="message">Message</label>
                     <textarea
@@ -86,10 +117,14 @@ const ContactPageMain = () => {
                         placeholder="Your Message"
                         value={contact.message}
                         onChange={(e) => handleChange(e)}
+                        onBlur={(e) => handleChangeDirty(e)}
                         className={styles.message_area}
                         maxLength={700}
+                        minLength={15}
                         required
+                        focused={isDirty.message.toString()}
                     />
+                    <div className={styles.error}>Minimum 15 letters</div>
                     <div>{contact.message.length} of 700</div>
 
                     <button type="submit" className={styles.submit_button}>
