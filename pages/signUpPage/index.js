@@ -10,10 +10,25 @@ import {
 
 function signUp() {
 const [name, setName] = useState("");
-const [email, setEmail] = useState()
-const [password, setPassword] = useState()
-const [confirmPassword, setconfirmPassword] = useState()
-console.log("name:", name)
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("")
+const [confirmPassword, setconfirmPassword] = useState("")
+// console.log("name:", name)
+// console.log("email:", email)  
+// console.log("password:", password)  
+
+const handleSubmit = (event)=>{
+event.preventDefault();
+const teamPayLoad = ()=>{
+    email,
+    name,
+    password,
+    confirmPassword
+
+    
+}
+console.log('payLoad:', teamPayLoad)
+}
     return (
         <div className={styles.container}>
             <h2>Create an account</h2>
@@ -25,8 +40,8 @@ console.log("name:", name)
                 <label for="first">Full name</label>
                 <input
                     type="text"
-                    id="first"
-                    name="first"
+                    // id="first"
+                    // name="first"
                     value={name}
                     onChange= {({target})=> setName(target?.value)}
                     placeholder="e.g John Doe"
@@ -35,24 +50,33 @@ console.log("name:", name)
                 <label for="email">Email</label>
                 <input
                     type="text"
-                    id="email"
-                    name="email"
+                    // id="email"
+                    // name="email"
                     value={email}
                     onChange= {({target})=> setEmail(target?.value)}
                     placeholder="e.g johndoe@gmail.com"
                     required
                 />
                 <label for="create">Create password</label>
-                <input type="password" id="create" name="create" required/>
+                <input
+                 type="password" 
+                //  id="create"
+                //   name="create"
+                value={password}
+                onChange={({target})=>setPassword(target?.value)}
+                   required/>
+
                 <label for="confirmpassword">Confirm password</label>
                 <input
                     type="password"
-                    id="confirmpassword"
-                    name="confirmpassword"
+                    // id="confirmpassword"
+                    // name="confirmpassword"
+                    value={confirmPassword}
+                    onChange ={({target})=>setconfirmPassword(target?.value)}
                     required
                 />
 
-                <button type="submit">Register</button>
+                <button type="submit" onClick={handleSubmit}>Register</button>
             </form>
 
             <div className={styles.fontAwesome}>
