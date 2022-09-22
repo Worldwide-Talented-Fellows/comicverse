@@ -19,6 +19,7 @@ function signUp() {
                     <input type="password" id="confirmpassword" name="confirmpassword" />
 
                     <button type="submit">Register</button>
+                    <button type="submit">Register</button>
                 </form>
             </div>
         </div>
