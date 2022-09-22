@@ -1,0 +1,11 @@
+.wrapper {
+    display: grid;
+    place-content: center;
+    height: 100vh;
+    background-color: #d5d5d5;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 41px 47px;
+}
