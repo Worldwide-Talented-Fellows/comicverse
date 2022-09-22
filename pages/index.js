@@ -1,19 +1,11 @@
 import { useSession, signOut, signIn } from 'next-auth/react';
 import { useEffect, useState } from 'react';
+import Navbar from '../src/components/Navbar';
 import styles from '../styles/home.module.css';
 export default function Home() {
-    const { data: session, status } = useSession();
-    // console.log(session);
     return (
         <div id="homepage">
-            {/* <div id={styles.nav}>
-                {session && <div>{session?.user?.name}</div>}
-                {!session ? (
-                    <button onClick={signIn}>Sign In</button>
-                ) : (
-                    <button onClick={signOut}>Sign Out</button>
-                )}
-            </div> */}
+            <Navbar />
             <div className={styles.heroContainer1}>
                 <h1>Trending</h1>
                 <div className={styles.heroContentContainer}>

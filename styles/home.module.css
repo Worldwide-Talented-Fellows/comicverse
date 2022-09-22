@@ -6,14 +6,30 @@
     overflow-x: hidden;
 }
 #nav {
-    /* position: absolute; */
+    position: sticky;
     width: 100%;
     height: 97px;
     left: 0px;
     top: 0px;
+    display: flex;
 
     /* Grey */
     background: #8d99ae;
+    align-items: center;
+}
+
+#nav span {
+    width: 200px;
+    height: 60px;
+    background: #d9d9d9;
+    margin-left: 50px;
+    margin-right: 120px;
+}
+#nav a {
+    margin-right: 70px;
+}
+#nav input {
+    margin-right: 120px;
 }
 
 .heroContainer1 {
@@ -28,7 +44,7 @@
     max-width: 100%;
     height: 559px;
     margin-right: 0px;
-    /* margin-top: 129px; */
+    margin-top: 129px;
 }
 .heroContentContainer {
     width: 100%;
