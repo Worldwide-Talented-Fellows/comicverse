@@ -1,12 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
 import styles from '../../styles/signUp/signUpPage.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faGoogle,
-    faTwitter,
-    faFacebook,
-} from '@fortawesome/free-brands-svg-icons';
+import TwitterIcon from '../../public/assets/contact_page/TwitterSVG';
+import FacebookIcon from '../../public/assets/contact_page/FacebookSVG';
+// import LinkedinIcon from '../../public/assets/contact_page/linkedin.svg';
+
+
 
 function signUp() {
     const [name, setName] = useState('');
@@ -78,19 +77,18 @@ function signUp() {
             </form>
 
             <div className={styles.fontAwesome}>
-                <a href="#">
-                    <FontAwesomeIcon icon={faGoogle} className={styles.icon} />
+                {/* <a href="#">
+                    <LinkedinIcon className={styles.icon} />
                     Google
-                </a>
+                </a> */}
 
                 <a href="#">
-                    <FontAwesomeIcon icon={faTwitter} className={styles.icon} />
+                    <TwitterIcon className={styles.icon} />
                     Twitter
                 </a>
 
                 <a href="#">
-                    <FontAwesomeIcon
-                        icon={faFacebook}
+                    <FacebookIcon
                         className={styles.icon}
                     />
                     Facebook
