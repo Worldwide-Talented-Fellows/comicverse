@@ -1,12 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 import styles from '../../styles/signUp/signUpPage.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faGoogle,
-    faTwitter,
-    faFacebook,
-} from '@fortawesome/free-brands-svg-icons';
+import FacebookIcon from '../../public/assets/contact_page/FacebookSVG';
+import GoogleIcon from '../../public/assets/contact_page/InstagramSVG';
+import TwitterIcon from '../../public/assets/contact_page/TwitterSVG';
 
 function signUp() {
     const [name, setName] = useState('');
@@ -79,20 +76,17 @@ function signUp() {
 
             <div className={styles.fontAwesome}>
                 <a href="#">
-                    <FontAwesomeIcon icon={faGoogle} className={styles.icon} />
+                    <GoogleIcon className={styles.icon} />
                     Google
                 </a>
 
                 <a href="#">
-                    <FontAwesomeIcon icon={faTwitter} className={styles.icon} />
+                    <TwitterIcon className={styles.icon} />
                     Twitter
                 </a>
 
                 <a href="#">
-                    <FontAwesomeIcon
-                        icon={faFacebook}
-                        className={styles.icon}
-                    />
+                    <FacebookIcon className={styles.icon} />
                     Facebook
                 </a>
             </div>
