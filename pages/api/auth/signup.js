@@ -23,7 +23,7 @@ export default async function handler(req, res) {
         const userData = {
             ...credentials,
             password: hashedPassword,
-            role: 'moderator',
+            role: 'user',
             emailVerified: false,
         };
         const user = await User.create(userData);

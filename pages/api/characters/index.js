@@ -3,7 +3,10 @@ import CharacterModel from '../../../server/models/Character';
 
 import getAuthenticatedUser from '../../../server/helpers/auth/token';
 import errorHandler from '../../../server/helpers/error-handler';
-import { AuthorizationError } from '../../../server/helpers/errors';
+import {
+    AuthorizationError,
+    NotFoundError,
+} from '../../../server/helpers/errors';
 
 export default async function handler(req, res) {
     await dbConnect();
@@ -37,9 +40,10 @@ export default async function handler(req, res) {
                 return errorHandler(error, res);
             }
         default:
-            res.status(405).json({
-                errorMessage: `No such method for this url: ${req.url}.`,
-            });
-            break;
+            try {
+                throw new NotFoundError(`No method for url ${req.url}`);
+            } catch (error) {
+                return errorHandler(error, res);
+            }
     }
 }

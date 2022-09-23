@@ -67,6 +67,7 @@ function sendErrorResponse(
 }
 
 export default function errorHandler(error, res) {
+    console.log(error);
     if (error.name in errorMap) {
         return errorMap[error.name](error, res);
     } else if (error.code in errorMap) {

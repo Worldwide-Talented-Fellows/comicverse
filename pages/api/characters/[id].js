@@ -95,9 +95,10 @@ export default async function handler(req, res) {
             }
 
         default:
-            res.status(405).json({
-                errorMessage: `No such method for this url: ${req.url}.`,
-            });
-            break;
+            try {
+                throw new NotFoundError(`No method for url ${req.url}`);
+            } catch (error) {
+                return errorHandler(error, res);
+            }
     }
 }
