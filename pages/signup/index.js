@@ -1,8 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
+import axios from 'axios';
 import styles from '../../styles/signUp/signUpPage.module.css';
 import FacebookIcon from '../../public/assets/contact_page/FacebookSVG';
-import GoogleIcon from '../../public/assets/contact_page/InstagramSVG';
+import GoogleIcon from '../../public/assets/contact_page/GoogleSVG';
 import TwitterIcon from '../../public/assets/contact_page/TwitterSVG';
 
 function signUp() {
@@ -10,23 +11,34 @@ function signUp() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setconfirmPassword] = useState('');
-    // console.log("name:", name)
-    // console.log("email:", email)
-    // console.log("password:", password)
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        const teamPayLoad = () => {
-            email, name, password, confirmPassword;
+        const teamPayLoad = {
+            email,
+            name,
+            password,
+            confirmPassword,
         };
         console.log('payLoad:', teamPayLoad);
+
+        try {
+        const {data} = await axios({
+                url: '/api/auth/signup.js',
+                method: 'POST',
+                data: 'teamPayload',
+            });
+            // console.log('response back:', data);
+        } catch (error) {
+            console.log('Error:', error);
+        }
     };
     return (
         <div className={styles.container}>
             <h2>Create an account</h2>
             <form
-                action="/send-data-here"
-                method="post"
+                // action="/send-data-here"
+                // method="post"
                 className={styles.input_forms}
             >
                 <label for="first">Full name</label>
