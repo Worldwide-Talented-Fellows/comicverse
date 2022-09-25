@@ -23,8 +23,8 @@ function signUp() {
         console.log('payLoad:', teamPayLoad);
 
         try {
-        const {data} = await axios({
-                url: '/api/auth/signup.js',
+            const data = await axios({
+                url: 'http://localhost:3000/api/auth/signup',
                 method: 'POST',
                 data: 'teamPayload',
             });
@@ -41,40 +41,40 @@ function signUp() {
                 // method="post"
                 className={styles.input_forms}
             >
-                <label for="first">Full name</label>
+                <label htmlFor="first_name">Full name</label>
                 <input
                     type="text"
-                    // id="first"
+                    id="first_name"
                     // name="first"
                     value={name}
                     onChange={({ target }) => setName(target?.value)}
                     placeholder="e.g John Doe"
                     required
                 />
-                <label for="email">Email</label>
+                <label htmlFor="email_field">Email</label>
                 <input
                     type="text"
-                    // id="email"
+                    id="email_field"
                     // name="email"
                     value={email}
                     onChange={({ target }) => setEmail(target?.value)}
                     placeholder="e.g johndoe@gmail.com"
                     required
                 />
-                <label for="create">Create password</label>
+                <label htmlFor="create_pwd">Create password</label>
                 <input
                     type="password"
-                    //  id="create"
+                    id="create_pwd"
                     //   name="create"
                     value={password}
                     onChange={({ target }) => setPassword(target?.value)}
                     required
                 />
 
-                <label for="confirmpassword">Confirm password</label>
+                <label htmlFor="confirm_pwd">Confirm password</label>
                 <input
                     type="password"
-                    // id="confirmpassword"
+                    id="confirm_pwd"
                     // name="confirmpassword"
                     value={confirmPassword}
                     onChange={({ target }) => setconfirmPassword(target?.value)}
@@ -85,6 +85,14 @@ function signUp() {
                     Register
                 </button>
             </form>
+
+            <div className={styles.form_alt}>
+                        <div className={styles.form_line1}></div>
+                        <span className={styles.form_or}>OR</span>
+                        <div className={styles.form_line2}></div>
+                    </div>
+        
+
 
             <div className={styles.fontAwesome}>
                 <a href="#">
