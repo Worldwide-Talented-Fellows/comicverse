@@ -1,7 +1,8 @@
 import { useSession, signOut, signIn } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import styles from '../styles/home.module.css';
-import  Button  from '../components/Button'
+import  Button  from '../components/Button';
+import Landing from './Landing';
 export default function Home() {
     const { data: session, status } = useSession();
     // console.log(session);
@@ -15,6 +16,7 @@ export default function Home() {
                     <button onClick={signOut}>Sign Out</button>
                 )}
             </div> */}
+            <Landing />
             <div className={styles.heroContainer1}>
                 <h1>Trending</h1>
                 <div className={styles.heroContentContainer}>
