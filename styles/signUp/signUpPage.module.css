@@ -54,6 +54,37 @@
     border-radius: 8px;
     margin-top: 8px;
 }
+.form_alt {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    height: 0px;
+}
+.form_line1,
+.form_line2 {
+    width: 160px;
+   
+    border: 1px solid #000000;
+    background-color: #000000;
+}
+.form_line1 {
+    margin-right: 4px;
+}
+.form_line2{
+    margin-left: 30px;
+}
+
+.form_or {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 40px;
+    display: flex;
+    align-items: center;
+    color: #aaa4a4;
+    align-items: center;
+    width: 20px;
+}
 
 .container .fontAwesome {
     display: flex;
