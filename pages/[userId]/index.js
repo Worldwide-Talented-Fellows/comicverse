@@ -1,5 +1,6 @@
 import DashboardSideNavbar from '../../components/dashboard/DashboardSideNavbar';
-// import DashboardMainSection from '../../components/dashboard/DashboardMainSection'
+import MainSection from '../../components/dashboard/overview/MainSection'
+
 import {useRouter} from 'next/router';
 import styles from '../../styles/dashboard.module.css';
 export default function Overview(props){
@@ -13,7 +14,7 @@ export default function Overview(props){
             {/* <VerticalLine/> */}
             <div className={styles.vertical_line}></div>
             {/* right side section  */}
-            {/* <DashboardMainSection /> */}
+            <MainSection /> 
         </div>
         )
 }

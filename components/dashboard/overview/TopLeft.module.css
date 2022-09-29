@@ -1,0 +1,8 @@
+.container{
+    background-color: #D9D9D9;
+    border: 1px solid #000;
+    width: 694px;
+    height: 500px;
+    border-radius: 20px;
+    position: relative;
+}

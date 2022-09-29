@@ -4,19 +4,19 @@ import FavHeroes from './FavHeroes'
 
 function DashBottom() {
     let favHeroes = [
-        { id: 'c1',
+        { id: 'h1',
         URL: 'https://bit.ly/3SysNdC',
         heading: 'The Batman'},
-        { id: 'c1',
+        { id: 'h2',
         URL: 'https://bit.ly/3SysNdC',
         heading: 'The Batman',},
-        { id: 'c1',
+        { id: 'h3',
         URL: 'https://bit.ly/3SysNdC',
         heading: 'The Batman',},
-        { id: 'c1',
+        { id: 'h4',
         URL: 'https://bit.ly/3SysNdC',
         heading: 'The Batman',},
-        { id: 'c1',
+        { id: 'h5',
         URL: 'https://bit.ly/3SysNdC',
         heading: 'The Batman',},
     ]
