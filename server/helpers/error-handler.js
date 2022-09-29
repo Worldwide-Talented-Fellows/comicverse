@@ -35,6 +35,13 @@ const errorMap = {
             error.message ?? 'Missing credentials'
         );
     },
+    ForbiddenError: (error, res) => {
+        return sendErrorResponse(
+            res,
+            403,
+            error.message ?? 'You dont have permission to do this request'
+        );
+    },
     11000: (error, res) => {
         const value = error.errmsg.match(/(["'])(\\?.)*?\1/)[0];
         return sendErrorResponse(

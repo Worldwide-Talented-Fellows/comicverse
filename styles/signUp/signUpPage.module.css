@@ -1,38 +1,126 @@
 .container {
-    background:var(  --color-7);
- 
-   
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    background-color: #f5f5f5;
+}
+.container h2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 48px;
+    background-color: #d2d0d0;
+    position: relative;
+    margin-top: 20px;
+    width: 100%;
 }
 
-.header h2 {
-    font-family: Poppins;
-    font-size: 40px;
+.container form label {
+    display: flex;
+    margin-top: 18px;
+    font-family: 'Poppins';
+    font-style: normal;
     font-weight: 600;
-    line-height: 60px;
-    letter-spacing: 0em;
-    text-align: center;
-    background: #d2d0d0;
-    margin: 8px 0px 8px 0px;
+    font-size: 18px;
+    line-height: 16px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
 }
 
-.input_forms label{
-    display: block;
-    margin-top: 10px;
-    margin-left: 346.4px;
+.container form input {
+    width: 400px;
+    background: #ffffff;
+    border: 2px solid #545559;
+    border-radius: 5px;
+    font-style: normal;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 20px;
 }
-.input_forms input{
+.container form button {
+    display: flex;
+    flex-flow: column no wrap;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    background: #2b2d42;
+    color: #ffffff;
+
+    padding: 5px 60px;
+    border: 1px solid #f9f9f9;
+    box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.28);
+    border-radius: 8px;
+    margin-top: 8px;
+}
+.form_alt {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    height: 0px;
+}
+.form_line1,
+.form_line2 {
+    width: 160px;
    
-    width: 500px;
-    margin-left: 346.9px;
+    border: 1px solid #000000;
+    background-color: #000000;
 }
-.input_forms button{
-    display: block;
-    margin-left: 390px;
-    margin-top: 10px;
- width:400px;
- background: var(--color-3);
- color: var(--color-2);
- border: var(--color-3)
+.form_line1 {
+    margin-right: 4px;
+}
+.form_line2{
+    margin-left: 30px;
+}
 
+.form_or {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 40px;
+    display: flex;
+    align-items: center;
+    color: #aaa4a4;
+    align-items: center;
+    width: 20px;
+}
 
+.container .fontAwesome {
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 5px;
+}
+.container .fontAwesome a {
+    border: 3px solid #181923;
+    border-radius: 8px;
+    width: 400px;
+    background: #f9f9f9;
+    margin-top: 8px;
+    color: #2b2d42;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fontAwesome .icon {
+    margin-right: 5px;
+    border-radius: 50px;
+    left: 6.25%;
+    right: 6.25%;
+    top: 6.25%;
+    background: #8d99ae;
+    color: #f5f5f5;
+}
+.container p .text {
+    color: #545559;
+    text-decoration: underline;
+}
+
+.container p {
+    margin-bottom: 15px;
 }
