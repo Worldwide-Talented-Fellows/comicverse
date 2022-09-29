@@ -1,5 +1,6 @@
 import { unstable_getServerSession } from 'next-auth';
 import { DEFAULT_LIMIT, MAX_LIMIT } from '../../../server/constants/search';
+import getAuthenticatedUser from '../../../server/helpers/auth/token';
 import errorHandler from '../../../server/helpers/error-handler';
 import {
     AuthorizationError,
@@ -14,7 +15,8 @@ export default async function handler(req, res) {
 
     await dbConnect();
 
-    const session = await unstable_getServerSession(req, res, authOptions);
+    const session = await getAuthenticatedUser(req);
+    console.log(session);
 
     switch (method) {
         case 'GET':
