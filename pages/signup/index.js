@@ -14,10 +14,10 @@ function signUp() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        setName("");
-        setconfirmPassword("");
-        setPassword("");
-        setEmail("");
+        setName('');
+        setconfirmPassword('');
+        setPassword('');
+        setEmail('');
         const teamPayLoad = {
             email,
             name,

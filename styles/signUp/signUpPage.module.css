@@ -64,14 +64,14 @@
 .form_line1,
 .form_line2 {
     width: 160px;
-   
+
     border: 1px solid #000000;
     background-color: #000000;
 }
 .form_line1 {
     margin-right: 4px;
 }
-.form_line2{
+.form_line2 {
     margin-left: 30px;
 }
 
@@ -113,7 +113,6 @@
     left: 6.25%;
     right: 6.25%;
     top: 6.25%;
-    background: #8d99ae;
     color: #f5f5f5;
 }
 .container p .text {
