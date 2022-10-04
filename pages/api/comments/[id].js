@@ -4,8 +4,8 @@ import {
     AuthorizationError,
 } from '../../../server/helpers/errors';
 import dbConnect from '../../../server/lib/dbConnect';
-import User from '../../../server/models/User';
-import getAuthenticatedUser from '../../../server/helpers/auth/token';
+import Comment from '../../../server/models/Comment';
+import getAuthenticatedComment from '../../../server/helpers/auth/token';
 
 export default async function handler(req, res) {
     const {
@@ -17,48 +17,46 @@ export default async function handler(req, res) {
     switch (method) {
         case 'GET':
             try {
-                const user = await User.findById(id).lean();
-                if (!user) throw new NotFoundError('User not found');
-                const { password, ...responseData } = user;
-                res.status(200).json({ success: true, data: responseData });
+                const comment = await Comment.findById(id).lean();
+                if (!comment) throw new NotFoundError('Comment not found');
+                res.status(200).json({ success: true, data: comment });
             } catch (error) {
                 return errorHandler(error, res);
             }
         case 'PUT':
-            const { body: userUpdateData } = req;
+            const { body: commentUpdateData } = req;
             try {
-                const user = await getAuthenticatedUser(req);
-                if (!user || user.id !== id)
+                const user = await getAuthenticatedComment(req);
+                const comment = await Comment.findById(id);
+                if (!user || !comment || user.id !== comment.author.id)
                     throw new AuthorizationError('Do not have permission');
 
-                const updatedUser = await User.findByIdAndUpdate(
+                const updatedComment = await Comment.findByIdAndUpdate(
                     id,
-                    userUpdateData,
+                    commentUpdateData,
                     {
                         new: true,
                         runValidators: true,
                     }
                 );
 
-                if (!updatedUser) throw NotFoundError('Unable to update user');
-
-                const { password, ...responseData } = updatedUser;
+                if (!updatedComment) throw NotFoundError('Unable to update comment');
 
                 return res.status(200).json({
                     success: true,
-                    data: responseData,
+                    data: updatedComment,
                 });
             } catch (error) {
                 return errorHandler(error, res);
             }
         case 'DELETE':
             try {
-                const deletedUser = await User.deleteOne({
+                const deletedComment = await Comment.deleteOne({
                     _id: id,
                 });
 
-                if (!deletedUser?.deletedCount)
-                    throw new NotFoundError('User not found');
+                if (!deletedComment?.deletedCount)
+                    throw new NotFoundError('Comment not found');
 
                 res.status(200).json({ success: true, data: {} });
             } catch (error) {
