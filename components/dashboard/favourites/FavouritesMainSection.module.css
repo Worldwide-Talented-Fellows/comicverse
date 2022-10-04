@@ -1,0 +1,7 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    gap:83.5px;
+    margin: 23px 25px 41px 32px;
+    border-radius: 20px;
+}

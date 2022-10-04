@@ -1,0 +1,25 @@
+.top{
+    margin-bottom: 28px;
+}
+
+.heading{
+    font-weight: 500;
+    font-size: 24px;
+    padding: 5px 16px;
+}
+
+.reviews{
+    display: flex;
+    gap:32px;
+}
+
+/* delete later */
+.review{
+    height: 240px;
+    width: 160px;
+    background-color: #d9d9d9;
+    border-radius: 5px;
+}
+.add-icon{
+
+}
