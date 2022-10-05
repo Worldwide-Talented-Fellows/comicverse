@@ -1,12 +1,11 @@
-import Top from './Top';
 import styles from './MainSection.module.css';
-import Bottom from './Bottom';
-
+import Navbar from './Navbar';
+import AddCard from '../AddCard';
 function MainSection() {
     return (
         <div className={styles.container}>
-            <Top />
-            <Bottom />
+            <Navbar />
+            <AddCard text="Add New Story" />
         </div>
     );
 }
