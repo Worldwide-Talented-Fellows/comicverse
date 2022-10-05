@@ -1,0 +1,79 @@
+.mainBackground {
+    width: 100%;
+    min-height: 1027px;
+    background-color: #D9D9D9;
+}
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.title {
+    padding-top: 289px;
+    font-weight: 700;
+    font-size: 64px;
+    max-width: 553px;
+    min-height: 192px;
+    line-height: 96px;
+    /* you'll need to figure this one out */
+    font-family: 'Poppins';
+    color: #000000;
+}
+.subtitle {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    max-width: 480px;
+    min-height: 72px;
+    padding-bottom: 90px;
+}
+
+.section {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.introButton {
+    width: 298px;
+    height: 60px;
+    border-radius: 8px;
+    color: white;
+    background-color: #2B2D42;
+}
+
+.listingItems {
+    display: grid;
+    list-style-type: none;
+    font-size: 40px;
+    margin-top: -75px;
+}
+
+.comic {
+    animation: comic 3s infinite linear;
+    grid-column: 1;
+    grid-row: 1;
+}
+.comic:nth-child(2) {
+    animation-delay: 1s;
+    opacity: 0;
+}
+.comic:nth-child(3) {
+    animation-delay: 2s;
+    opacity: 0;
+}
+
+@keyframes comic {
+    0% {
+        margin-top: 0px;
+        opacity: 0.5;
+    }
+    50% {
+        margin-top: 100px;
+        opacity: 1;
+    }
+    100% {
+        margin-top: 200px;
+        opacity: 0;
+    }
+}

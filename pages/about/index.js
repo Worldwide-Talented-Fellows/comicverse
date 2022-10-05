@@ -1,15 +1,16 @@
 import Link from 'next/link';
+import styles from '/styles/about.module.css';
 
 const AboutPage = () => {
     return (
-        <div>
-            <header>
+        <div className={styles.container}>
+            <header className={styles.header}>
                 <span>
-                    <Link href="/">Home</Link> &gt; Home
+                    <Link href="/">Home</Link> &gt; About Us
                 </span>
                 <h1>About Us</h1>
             </header>
-            <section>
+            <section className={styles.body}>
                 <div>
                     <h2>Vision</h2>
                     <p>
@@ -59,7 +60,7 @@ const AboutPage = () => {
                     </p>
                 </div>
 
-                <h2>Goals</h2>
+                <h2>Our Goals</h2>
             </section>
         </div>
     );

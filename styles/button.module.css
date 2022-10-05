@@ -1,0 +1,60 @@
+/* All Button styles */
+.Button {
+    border-radius: 8px;
+    padding: 10px 40px;
+    gap: 5px;
+    
+}
+.Button:hover :not(.disabled) {
+    cursor: pointer;
+}
+
+/* Primary Button styles */
+.Primary {
+    background: #2B2D42;
+    border: none;
+}
+.Primary:hover {
+    box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.28);
+}
+.Primary:active {
+    opacity: 0.7;
+}
+
+
+/* Secondary Button styles */
+.Secondary {
+    border: 3px solid #2B2D42;
+    background: #ffffff;
+    color: #2B2D42;
+}
+.Secondary:hover {
+    filter: drop-shadow(0px 4px 16px rgba(0, 0, 0, 0.3));
+    
+}
+.Secondary:active {
+    opacity: 0.7;
+}
+
+
+/* Tertiary Button styles */
+.Tertiary {
+    border: none;
+    background: #E5E5E5;
+    color: #1A1A1A
+}
+
+.Tertiary:hover {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.Tertiary:active {
+    opacity: 0.7;
+}
+
+/* Disabled */
+.Disabled {
+    opacity: 0.7;
+    pointer-events: none;
+
+}

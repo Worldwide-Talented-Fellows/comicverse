@@ -1,0 +1,117 @@
+.wrapper {
+    display: grid;
+    place-content: center;
+    height: 100vh;
+    background-color: #d5d5d5;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    padding: 41px 47px;
+    width: 800px;
+    box-shadow: 0px 30px 45px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.closeIcon {
+    align-self: flex-end;
+    cursor: pointer;
+    margin-bottom: 100px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+}
+
+.content .list {
+    list-style: none;
+    margin-left: -50px;
+}
+
+.content .list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: -170px;
+}
+
+.content .list li:first-child {
+    margin-top: -75px;
+}
+
+.content .list li:before {
+    content: '\00b7';
+    font-size: 150px;
+    margin: -5px 20px 0px 0px;
+}
+
+.buttonGroup {
+    margin-top: 150px;
+    align-self: flex-end;
+}
+
+.buttonGroup .primaryButton {
+    font-size: 20px;
+    background: #2b2d42;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 15px 60px;
+    box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.28);
+    margin-right: 80px;
+}
+
+.buttonGroup .secondaryButton {
+    font-size: 20px;
+    background: #2b2d42;
+    opacity: 0.8;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 15px 50px;
+    box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.28);
+}
+
+@media (max-width: 850px) {
+    .container {
+        width: 550px;
+    }
+
+    .container h1 {
+        font-size: 24px;
+    }
+
+    .content {
+        font-size: 18px;
+    }
+
+    .buttonGroup {
+        align-self: center;
+    }
+}
+
+@media (max-width: 590px) {
+    .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #d5d5d5;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .buttonGroup {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .buttonGroup .primaryButton,
+    .buttonGroup .secondaryButton {
+        font-size: 12px;
+        padding: 15px 20px;
+    }
+}
