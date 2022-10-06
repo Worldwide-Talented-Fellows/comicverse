@@ -3,7 +3,6 @@ import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import clientPromise from '../../../server/lib/mongoClient';
-import User from '../../../server/models/User';
 import { validateUser } from '../../../server/helpers/auth';
 
 export const authOptions = {
