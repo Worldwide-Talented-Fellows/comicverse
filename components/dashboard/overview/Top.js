@@ -1,13 +1,14 @@
-import React from 'react';
 import TopLeft from './TopLeft';
+import TopRight from './TopRight';
+import styles from './Top.module.css';
 
 function Top() {
-  return (
-    <div>
-        <TopLeft/>
-        {/* <TopRight/> */}
-    </div>
-  )
+    return (
+        <div className={styles.container}>
+            <TopLeft />
+            <TopRight />
+        </div>
+    );
 }
 
-export default Top
+export default Top;

@@ -1,20 +1,26 @@
-.top{
+.top {
     margin-bottom: 28px;
 }
-.heading:after{
-    content:'';
-    border-left: 2px solid #000;
-    transform: rotate('180deg');
-    height : 1129px;
-}
 
-.heading{
+.heading {
     font-weight: 500;
     font-size: 24px;
     padding: 5px 16px;
+    position: relative;
 }
 
-.comics{
+.heading:after {
+    content: '';
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+    position: absolute;
+    left: 282px;
+    bottom: 21px;
+    width: 900px;
+    /* height: 100px;; */
+}
+
+.comics {
     display: flex;
-    gap:32px;
+    gap: 32px;
 }

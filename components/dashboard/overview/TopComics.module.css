@@ -1,0 +1,50 @@
+.container {
+    position: relative;
+}
+
+.image {
+    width: 161px;
+    border-radius: 5px;
+    border: 2px solid #2b2d42;
+    height: 240px;
+}
+
+.heartIcon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+}
+
+.heading {
+    font-size: 16px;
+    font-weight: 400;
+    /* vertical-align: top; */
+}
+
+.other-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon-ratings {
+    display: flex;
+    gap: 2px;
+}
+
+.icon {
+}
+
+.ratings {
+    font-size: 8px;
+}
+
+.author {
+    font-size: 10px;
+}
