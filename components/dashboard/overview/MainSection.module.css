@@ -1,6 +1,9 @@
 .container{
     display: flex;
     flex-direction: column;
-    /* gap:83.5px; */
-    margin: 32px 15px 41px 35px;
+    gap: 22px;
+    margin: 32px 25px 41px 0px;
+    border-radius: 20px;
+    width: 100%;
+    background: rgba(213, 213, 213, 1);
 }

@@ -5,7 +5,7 @@ const Button = ({ btntype, children, className, disable }) => {
     // Btntype: Primary, Secondary, Tertiary
     // placeholder text: Text you want button to display.
     // disable: If false or falsey values are passed into disable it will be false and vice versa for true.
-
+   
     return (
         <button
             type="button"

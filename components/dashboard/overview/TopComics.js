@@ -1,8 +1,8 @@
-import styles from './FavComics.module.css';
 import RatingsSVG from '../../../public/assets/dashboardSVG/ratingsSVG';
-import HeartSVG from '../../../public/assets/dashboardSVG/heartSVG';
+import EmptyHeartSVG from '../../../public/assets/dashboardSVG/emptyHeartSVG';
+import styles from './TopComics.module.css';
 
-function FavComics(props) {
+function TopComics(props) {
     return (
         <div className={styles.container}>
             <img
@@ -10,7 +10,7 @@ function FavComics(props) {
                 alt={props.comic.heading}
                 className={styles.image}
             />
-            <HeartSVG className={styles.heartIcon} />
+            <EmptyHeartSVG className={styles.heartIcon} />
             <div className={styles.details}>
                 <p className={styles.heading}>{props.comic.heading}</p>
                 <div className={styles['other-details']}>
@@ -27,4 +27,4 @@ function FavComics(props) {
     );
 }
 
-export default FavComics;
+export default TopComics;

@@ -1,16 +1,20 @@
+import AddCard from '../../components/dashboard/AddCard';
 import DashboardSideNavbar from '../../components/dashboard/DashboardSideNavbar';
-import MainSection from '../../components/dashboard/overview/MainSection';
-import { useRouter } from 'next/router';
+import Navbar from '../../components/dashboard/mystory/Navbar';
 import styles from '../../styles/dashboard.module.css';
-export default function Overview(props) {
+import MainSection from '../../components/dashboard/mystory/MainSection';
+
+function mystory() {
     return (
         <div className={styles.container}>
             {/* left side navbar  */}
-            <DashboardSideNavbar/>
+            <DashboardSideNavbar />
             {/* <VerticalLine/> */}
             <div className={styles.vertical_line}></div>
             {/* right side section  */}
-            <MainSection/>
+            <MainSection />
         </div>
     );
 }
+
+export default mystory;
