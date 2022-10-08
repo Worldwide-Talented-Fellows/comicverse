@@ -74,3 +74,36 @@
     display: flex;
     justify-content: space-between;
 }
+
+@media screen and (max-width: 1280px) {
+    .buttonGroup {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .buttonGroup {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .buttonGroup {
+        flex-wrap: wrap;
+    }
+
+    .modifyButtons {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .primaryButton {
+        padding: 20px 100px;
+    }
+
+    .secondaryButton {
+        padding: 20px 50px;
+    }
+}
