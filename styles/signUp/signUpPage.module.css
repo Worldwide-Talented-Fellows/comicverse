@@ -19,6 +19,7 @@
 .container form label {
     display: flex;
     margin-top: 18px;
+    margin-bottom: 10px;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
@@ -36,7 +37,7 @@
     border-radius: 5px;
     font-style: normal;
     font-family: 'Poppins';
-    font-weight: 600;
+    font-weight: 400;
     font-size: 20px;
 }
 .container form button {
@@ -47,13 +48,13 @@
     width: 400px;
     background: #2b2d42;
     color: #ffffff;
-
     padding: 5px 60px;
-    border: 1px solid #f9f9f9;
+    border: 1px solid  #2B2D45;
     box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.28);
     border-radius: 8px;
     margin-top: 8px;
 }
+
 .form_alt {
     display: flex;
     margin-top: 20px;
@@ -64,14 +65,14 @@
 .form_line1,
 .form_line2 {
     width: 160px;
-   
+
     border: 1px solid #000000;
     background-color: #000000;
 }
 .form_line1 {
     margin-right: 4px;
 }
-.form_line2{
+.form_line2 {
     margin-left: 30px;
 }
 
@@ -91,6 +92,7 @@
     flex-flow: column;
     margin-bottom: 5px;
 }
+
 .container .fontAwesome a {
     border: 3px solid #181923;
     border-radius: 8px;
@@ -113,8 +115,7 @@
     left: 6.25%;
     right: 6.25%;
     top: 6.25%;
-    background: #8d99ae;
-    color: #f5f5f5;
+    background: #f5f5f5;
 }
 .container p .text {
     color: #545559;
