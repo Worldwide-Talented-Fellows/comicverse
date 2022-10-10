@@ -15,6 +15,10 @@ function signUp() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setName('');
+        setconfirmPassword('');
+        setPassword('');
+        setEmail('');
         const teamPayLoad = {
             email,
             name,
@@ -22,7 +26,24 @@ function signUp() {
             confirmPassword,
         };
         console.log('payLoad:', teamPayLoad);
+        //     const JSONdata = JSON.stringify(teamPayLoad);
+        //     const endpoint = '/api/auth/signup';
 
+        //     const options = {
+        //         // The method is POST because we are sending data.
+        //         method: 'POST',
+        //         // Tell the server we're sending JSON.
+        //         headers: {
+        //           'Content-Type': 'application/json',
+        //         },
+        //         // Body of the request is the JSON data we created above.
+        //         body: JSONdata,
+        //       };
+        //       const response = await fetch(endpoint, options)
+        //     console.log('payLoad:', teamPayLoad);
+        //     const result = await response.json()
+        //     alert(`Is this your full name: ${result.data}`)
+        //   }
         try {
             const data = await axios({
                 url: 'http://localhost:3000/api/auth/signup',

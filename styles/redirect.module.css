@@ -72,3 +72,46 @@
     padding: 15px 50px;
     box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.28);
 }
+
+@media (max-width: 850px) {
+    .container {
+        width: 550px;
+    }
+
+    .container h1 {
+        font-size: 24px;
+    }
+
+    .content {
+        font-size: 18px;
+    }
+
+    .buttonGroup {
+        align-self: center;
+    }
+}
+
+@media (max-width: 590px) {
+    .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #d5d5d5;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .buttonGroup {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .buttonGroup .primaryButton,
+    .buttonGroup .secondaryButton {
+        font-size: 12px;
+        padding: 15px 20px;
+    }
+}

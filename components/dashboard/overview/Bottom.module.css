@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.heading {
+    font-weight: 500;
+    font-size: 24px;
+    background: rgba(255, 255, 255, 1);
+    height: 46px;
+    width: 242px;
+    padding: 5px 10px 5px 10px;
+    position: relative;
+}
+
+.heading:after {
+    content: '';
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+    position: absolute;
+    left: 242px;
+    bottom: 23px;
+    width: 1030px;
+    /* height: 100px;; */
+}
+
+.comics {
+    display: flex;
+    gap: 32px;
+}

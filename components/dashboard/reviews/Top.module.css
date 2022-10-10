@@ -1,0 +1,26 @@
+.top {
+    margin-bottom: 28px;
+}
+
+.heading {
+    font-weight: 500;
+    font-size: 24px;
+    padding: 5px 16px;
+    position: relative;
+}
+
+.heading:after {
+    content: '';
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+    position: absolute;
+    left: 182px;
+    bottom: 21px;
+    width: 1050px;
+    /* height: 100px;; */
+}
+
+.comics {
+    display: flex;
+    gap: 32px;
+}

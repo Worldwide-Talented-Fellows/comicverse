@@ -1,0 +1,49 @@
+.container {
+    /* background-color: #D9D9D9; */
+    border: 1px solid #000;
+    width: 694px;
+    height: 500px;
+    border-radius: 20px;
+    position: relative;
+    padding: 10px 16px;
+}
+
+.top {
+    position: absolute;
+    top: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    background: rgba(35, 31, 31, 0.6);
+    border-radius: 10px;
+}
+.username {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+.bottom-left {
+    position: absolute;
+    bottom: 24px;
+    color: #fff;
+    background: rgba(35, 31, 31, 0.6);
+    border-radius: 10px;
+}
+
+.author {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.comic {
+    font-weight: 500;
+    font-size: 32px;
+    /* line-height: 48px; */
+}
+.btn {
+    position: absolute;
+    bottom: 24px;
+    right: 10px;
+}

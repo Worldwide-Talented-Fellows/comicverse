@@ -105,7 +105,7 @@ const Story = () => {
                             />
                             <span>Save as Draft</span>
                         </button>
-                        <div>
+                        <div className={styles.modifyButtons}>
                             <button className={styles.secondaryButton}>
                                 Add New Chapter
                             </button>

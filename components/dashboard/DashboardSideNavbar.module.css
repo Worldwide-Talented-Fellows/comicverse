@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 182px;
+    margin: 23px 0;
+}
+.link_container {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    padding-left: 0;
+}
+
+.link_item,
+.link_item:link {
+    padding: 12px 33px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+.link_item:hover,
+.link_item:active, .link_item:visited {
+    padding: 12px 33px;
+    background-color: #2b2d42;
+    color: #fff;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.link_item:hover .svg path {
+    stroke: #fff;
+}
+
+.link_item span {
+    font-size: 20px;
+}

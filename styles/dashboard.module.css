@@ -1,0 +1,10 @@
+.container{
+    display: flex;
+    gap: 32px;
+}
+
+
+.vertical_line{
+    border-left:1px solid #939393;
+    /* width: 1024px; */
+}

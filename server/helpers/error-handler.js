@@ -39,7 +39,7 @@ const errorMap = {
         return sendErrorResponse(
             res,
             403,
-            error.message ?? 'You dont have permission to do this request'
+            error.message ?? `You don't have permission to do this request`
         );
     },
     11000: (error, res) => {
@@ -50,7 +50,7 @@ const errorMap = {
             `Duplicate field value: ${value}. Please use another value!`
         );
     },
-    DefaultError: (error, res) => {
+    DefaultError: (res) => {
         return sendErrorResponse(res);
     },
 };

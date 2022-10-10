@@ -1,26 +1,16 @@
 function Icon(props) {
     return (
         <svg
-            width={13}
-            height={21}
+            width={26}
+            height={26}
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             {...props}
         >
-            <g clipPath="url(#prefix__clip0_5_6)">
-                <path
-                    d="M11.184 1.386H8.521a4.44 4.44 0 00-4.44 4.439V8.49H1.419v3.551h2.664v7.103h3.551V12.04h2.664l.887-3.551H7.633V5.825a.888.888 0 01.888-.888h2.663V1.386z"
-                    stroke="#000"
-                    strokeWidth={1.776}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                />
-            </g>
-            <defs>
-                <clipPath id="prefix__clip0_5_6">
-                    <path fill="#fff" d="M0 0h13v21H0z" />
-                </clipPath>
-            </defs>
+            <path
+                d="M23.417 13C23.417 7.25 18.75 2.583 13 2.583S2.583 7.25 2.583 13c0 5.042 3.584 9.24 8.334 10.208v-7.083H8.833V13h2.084v-2.604a3.65 3.65 0 013.646-3.646h2.604v3.125h-2.084c-.572 0-1.041.469-1.041 1.042V13h3.125v3.125h-3.125v7.24c5.26-.521 9.375-4.959 9.375-10.365z"
+                fill="#8D99AE"
+            />
         </svg>
     );
 }
