@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import ImageContainer from '../../components/ImageContainer';
 import styles from '../../styles/story.module.css';
 
 const Story = () => {
@@ -7,22 +8,7 @@ const Story = () => {
             <article>
                 <section className={styles.container}>
                     <h1 className={styles.title}>StoryTitle</h1>
-                    {/* TODO: slider below to be put into own component
-                        divs below are placeholders for where images are supposed to be */}
-                    <div className={styles.imageContainer}>
-                        <div className={styles.image}></div>
-                        <div className={styles.image}></div>
-                        <div className={styles.image}></div>
-                        <div className={styles.image}></div>
-                        <div className={styles.image}></div>
-                        <div className={styles.image}></div>
-                        <div className={styles.image}></div>
-                        <div className={styles.image}></div>
-                        <div className={styles.image}></div>
-                        <div className={styles.image}></div>
-                        <div className={styles.image}></div>
-                        <div className={styles.image}></div>
-                    </div>
+                    <ImageContainer />
                     <p className={styles.paragraph}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Sed id feugiat et et nunc. Lectus ac in arcu facilisi.
