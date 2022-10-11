@@ -11,21 +11,6 @@
     padding: 0px 0px 0px 48px;
 }
 
-.imageContainer {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding: 10px;
-}
-
-.image {
-    width: 192px;
-    height: 194px;
-    background: #d9d9d9;
-    flex-shrink: 0;
-}
-
 .paragraph {
     font-size: 18px;
     line-height: 150%;
