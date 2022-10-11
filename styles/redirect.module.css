@@ -61,6 +61,7 @@
     padding: 15px 60px;
     box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.28);
     margin-right: 80px;
+    cursor: pointer;
 }
 
 .buttonGroup .secondaryButton {
@@ -71,6 +72,7 @@
     border-radius: 8px;
     padding: 15px 50px;
     box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.28);
+    cursor: pointer;
 }
 
 @media (max-width: 850px) {
