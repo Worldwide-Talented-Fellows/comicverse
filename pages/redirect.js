@@ -1,6 +1,7 @@
 import styles from '../styles/redirect.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const Redirect = () => {
     const router = useRouter();
@@ -27,12 +28,16 @@ const Redirect = () => {
                             <li>Publish story</li>
                         </ul>
                         <div className={styles.buttonGroup}>
-                            <button className={styles.primaryButton}>
-                                Log In
-                            </button>
-                            <button className={styles.secondaryButton}>
-                                Register
-                            </button>
+                            <Link href="/signIn">
+                                <button className={styles.primaryButton}>
+                                    Log In
+                                </button>
+                            </Link>
+                            <Link href="/signup">
+                                <button className={styles.secondaryButton}>
+                                    Register
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
