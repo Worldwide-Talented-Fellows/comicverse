@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from '../styles/imageContainer.module.css';
 
 const ImageContainer = () => {
