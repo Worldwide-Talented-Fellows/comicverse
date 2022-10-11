@@ -1,10 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
+import Link from 'next/link';
 import axios from 'axios';
-import styles from '../../styles/signUp/signUpPage.module.css';
-import FacebookIcon from '../../public/assets/contact_page/FacebookSVG';
-import GoogleIcon from '../../public/assets/contact_page/GoogleSVG';
-import TwitterIcon from '../../public/assets/contact_page/TwitterSVG';
+import styles from '../../styles/signup/signuppage.module.css';
+import FacebookIcon from '../../public/assets/signuppage/FacebookSVG';
+import GoogleIcon from '../../public/assets/signuppage/GoogleSVG';
+import TwitterIcon from '../../public/assets/signuppage/TwitterSVG';
 
 function signUp() {
     const [name, setName] = useState('');
@@ -57,11 +58,7 @@ function signUp() {
     return (
         <div className={styles.container}>
             <h2>Create an account</h2>
-            <form
-                // action="/send-data-here"
-                // method="post"
-                className={styles.input_forms}
-            >
+            <form className={styles.input_forms}>
                 <label htmlFor="first_name">Full name</label>
                 <input
                     type="text"
@@ -114,25 +111,30 @@ function signUp() {
             </div>
 
             <div className={styles.fontAwesome}>
-                <a href="#">
-                    <GoogleIcon className={styles.icon} />
-                    Google
-                </a>
+                <Link href="/">
+                    <a>
+                        <GoogleIcon className={styles.icon} />
+                        Google
+                    </a>
+                </Link>
 
-                <a href="#">
-                    <TwitterIcon className={styles.icon} />
-                    Twitter
-                </a>
-
-                <a href="#">
-                    <FacebookIcon className={styles.icon} />
-                    Facebook
-                </a>
+                <Link href="/">
+                    <a>
+                        <TwitterIcon className={styles.icon} />
+                        Twitter
+                    </a>
+                </Link>
+                <Link href="/">
+                    <a>
+                        <FacebookIcon className={styles.icon} />
+                        Facebook
+                    </a>
+                </Link>
             </div>
             <p>
                 Already has an acount?{' '}
                 <a className={styles.text} href="#">
-                    LogIn here{' '}
+                    LogIn here
                 </a>
             </p>
         </div>
