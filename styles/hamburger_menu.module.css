@@ -1,0 +1,17 @@
+.hamburger_container {
+    display: none;
+}
+@media only screen and (max-width: 600px) {
+    .hamburger_container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+        margin: 0 auto;
+        width: 90%;
+    }
+    .burger_icon {
+        transform: rotate(90deg);
+        font-size: 30px;
+    }
+}

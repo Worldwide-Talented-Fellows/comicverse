@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import styles from '../styles/navbar.module.css';
 import SearchIconSVG from '../public/assets/SearchIconSVG';
 import ProfileIconSVG from '../public/assets/ProfileIconSVG';
+import Hamburger from './Hamburger';
 
 const Navbar = () => {
     const [searchBar, setSearchBar] = useState('');
@@ -20,6 +21,7 @@ const Navbar = () => {
     const router = useRouter();
 
     return (
+        <div>
         <div className={styles.navbar}>
             <div>
                 <Link href={'/'}>LOGO</Link>
@@ -55,7 +57,10 @@ const Navbar = () => {
                 />
             </div>
             <ProfileIconSVG />
+           
         </div>
+         <Hamburger />
+         </div>
     );
 };
 
