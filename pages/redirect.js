@@ -28,12 +28,12 @@ const Redirect = () => {
                             <li>Publish story</li>
                         </ul>
                         <div className={styles.buttonGroup}>
-                            <Link href="/signIn">
+                            <Link href="/api/auth/signin">
                                 <button className={styles.primaryButton}>
                                     Log In
                                 </button>
                             </Link>
-                            <Link href="/signup">
+                            <Link href="/api/auth/signup">
                                 <button className={styles.secondaryButton}>
                                     Register
                                 </button>
