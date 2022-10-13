@@ -14,4 +14,41 @@
         transform: rotate(90deg);
         font-size: 30px;
     }
+    .burger_icon:hover {
+        cursor: pointer;
+    }
+}
+
+/* LefNav styles */
+.leftnav_container {
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .leftnav_container {
+        display: flex;
+        flex-flow: row nowrap;
+        position: absolute;
+        width: 250px;
+        height: 588px;
+        left: 0px;
+        top: 170px;
+        background: #f9f9f9;
+    }
+    .leftnav_container li {
+        list-style: none;
+        height: 60px;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 800;
+        font-size: 20px;
+        color: #000000;
+        margin-left: 10px;
+    }
+    .leftnav_container .logo {
+        display: flex;
+    }
+    .leftnav_container .logo:nth-child(7) {
+        margin-top: 80px;
+    }
 }
