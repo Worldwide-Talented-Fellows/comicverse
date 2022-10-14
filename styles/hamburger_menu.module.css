@@ -3,6 +3,7 @@
 }
 @media only screen and (max-width: 600px) {
     .hamburger_container {
+        position: relative;
         display: flex;
         justify-content: space-between;
         align-items: center;

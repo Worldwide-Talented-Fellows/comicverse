@@ -7,8 +7,8 @@ import LogoutSVG from '../../public/assets/navbarSVG/LogoutSVG';
 import MystorySVG from '../../public/assets/navbarSVG/MystorySVG';
 import ReviewsSVG from '../../public/assets/navbarSVG/ReviewsSVG';
 
-
-const LeftNav = ({open}) => {
+const LeftNav = ({ isOpen }) => {
+    if (!isOpen) return null;
     return (
         <div className={styles.leftnav_container}>
             <ul>
@@ -21,11 +21,11 @@ const LeftNav = ({open}) => {
                     <li>Collections </li>
                 </div>
 
-               <div className={styles.logo}>
+                <div className={styles.logo}>
                     <FavoritesSVG />
                     <li>Favorites </li>
                 </div>
- 
+
                 <div className={styles.logo}>
                     <ReviewsSVG />
                     <li> Reviews</li>
@@ -47,7 +47,7 @@ const LeftNav = ({open}) => {
                 <div className={styles.logo}>
                     <LogoutSVG />
                     <li> Logout</li>
-                </div> 
+                </div>
             </ul>
         </div>
     );
