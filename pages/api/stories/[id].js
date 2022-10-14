@@ -1,12 +1,8 @@
 import errorHandler from '../../../server/helpers/error-handler';
-import {
-    NotFoundError,
-    AuthorizationError,
-} from '../../../server/helpers/errors';
+import {NotFoundError,AuthorizationError} from '../../../server/helpers/errors';
 import dbConnect from '../../../server/lib/dbConnect';
-import Comment from '../../../server/models/Story';
 import getAuthenticatedUser from '../../../server/helpers/auth/token';
-import Story from '../../../server/models/Story';
+import StoryModel from '../../../server/models/Story';
 
 export default async function handler(req, res) {
     const {
@@ -17,9 +13,9 @@ export default async function handler(req, res) {
     const session = await getAuthenticatedUser(req);
     switch (method) {
         case 'GET':
-            /* GET /api/stories/:id => Get a specific story from database (by its id) */
+            /* GET /api/stories/:id => Get a specific story from database */
             try {
-                const story = await Story.findById(id);
+                const story = await StoryModel.findById(id);
                 if (!story) {
                     throw new NotFoundError('Story not found.');
                 }
