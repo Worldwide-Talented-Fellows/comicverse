@@ -1,7 +1,7 @@
 .mainBackground {
     width: 100%;
     min-height: 1027px;
-    background-color: #D9D9D9;
+    background-color: #d9d9d9;
 }
 .container {
     width: 90%;
@@ -39,12 +39,12 @@
     height: 60px;
     border-radius: 8px;
     color: white;
-    background-color: #2B2D42;
+    background-color: #2b2d42;
 }
 
 .listingItems {
     display: grid;
-    list-style-type: none;
+    /* list-style-type: none; */
     font-size: 40px;
     margin-top: -75px;
 }

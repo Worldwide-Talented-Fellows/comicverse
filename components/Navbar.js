@@ -2,12 +2,14 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-import styles from '../styles/navbar.module.css';
+import Logo from '../public/assets/Logo.png';
 import SearchIconSVG from '../public/assets/SearchIconSVG';
 import ProfileIconSVG from '../public/assets/ProfileIconSVG';
 import Hamburger from './HamburgerMenu/Hamburger';
+import styles from '../styles/navbar.module.css';
 
 const Navbar = () => {
     const [searchBar, setSearchBar] = useState('');
@@ -23,8 +25,16 @@ const Navbar = () => {
     return (
         <div>
             <div className={styles.navbar}>
-                <div>
-                    <Link href={'/'}>LOGO</Link>
+                <div className={styles.logo_container}>
+                    <Link href={'/'}>
+                        <Image
+                            src={Logo}
+                            width={50}
+                            height={50}
+                            alt="logo"
+                            className={styles.logo_image}
+                        />
+                    </Link>
                 </div>
 
                 <ul className={styles.link_container}>
@@ -56,7 +66,10 @@ const Navbar = () => {
                         placeholder="Search comic..."
                     />
                 </div>
-                <ProfileIconSVG />
+
+                <div className={styles.profile_icon_container}>
+                    <ProfileIconSVG />
+                </div>
             </div>
             <Hamburger />
         </div>

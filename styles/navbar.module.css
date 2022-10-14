@@ -1,5 +1,5 @@
 .navbar {
-    position: sticky;
+    position: sticky; /* figure out abt sticky */
     width: 100%;
     top: 0;
     height: 97px;
@@ -7,14 +7,26 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 80px;
+    /* padding: 0 5%; */
     z-index: 1;
+}
+
+.logo_container {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.logo_image {
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .link_container {
     display: flex;
-    gap: 44px;
+    justify-content: space-around;
     padding: 0;
+    flex-grow: 3;
 }
 
 .link_item {
@@ -37,6 +49,8 @@
     height: 44px;
     border: 2px solid black;
     border-radius: 5px;
+    flex-grow: 1;
+    margin: 0 10px;
 }
 
 .search_bar_svg {
@@ -58,4 +72,27 @@
 
 .search_bar::placeholder {
     color: black;
+}
+
+.profile_icon_container {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+@media only screen and (max-width: 1000px) {
+    .search_bar_container {
+        display: none;
+    }
+
+    .link_container {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (min-width: 200px) and (max-width: 600px) {
+    .link_container {
+        font-size: 12px;
+        flex-grow: 3;
+    }
 }

@@ -1,7 +1,7 @@
 import { useSession, signOut, signIn } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import styles from '../styles/home.module.css';
-import  Button  from '../components/Button';
+import Button from '../components/Button';
 import Landing from './Landing';
 export default function Home() {
     const { data: session, status } = useSession();
@@ -17,7 +17,7 @@ export default function Home() {
                 )}
             </div> */}
             <Landing />
-            <div className={styles.heroContainer1}>
+            {/* <div className={styles.heroContainer1}>
                 <h1>Trending</h1>
                 <div className={styles.heroContentContainer}>
                     <div className={styles.boxOuter}>
@@ -66,7 +66,7 @@ export default function Home() {
             <div id={styles.laContainer}>
                 <h1>Latest Articles</h1>
                 <div>Article Content</div>
-            </div>
+            </div> */}
         </div>
     );
     // /*THİS CODE IS FOR TESTING PURPOSE CAN BE WILL BE DELETED

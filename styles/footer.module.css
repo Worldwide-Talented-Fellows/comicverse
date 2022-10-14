@@ -1,15 +1,15 @@
 .footer {
-    height: 287px;
     background-color: #8d99ae;
     position: relative;
+    width: 100%;
 }
 
 .grid_container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 50px;
-    padding: 20px 150px;
     justify-items: center;
+    padding: 20px 0;
 }
 
 .column_caption {
@@ -29,13 +29,12 @@
 }
 
 .test {
+    position: relative;
     text-align: center;
     font-weight: 500;
     font-size: 20px;
     color: rgba(0, 0, 0, 0.51);
-    position: absolute;
     width: 100%;
-    bottom: 8px;
 }
 
 .test::before {
@@ -43,6 +42,20 @@
     position: absolute;
     width: 100%;
     left: 0;
-    bottom: 108%;
+    bottom: 100%;
     border: 1px solid black;
+}
+
+@media only screen and (max-width: 1000px) {
+    .grid_container {
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: start;
+        align-items: start;
+        padding: 5% 5%;
+    }
+
+    .grid_container div:last-child {
+        grid-column: span 2;
+        width: 100%;
+    }
 }
