@@ -48,6 +48,20 @@
     }
     .leftnav_container .logo {
         display: flex;
+
+        /* background-image: linear-gradient(#8d99ae, #8d99ae);
+        border-radius: 8px;
+        background-size: 0 100%;
+        background-repeat: no-repeat;
+        transition: 0.4s; */
+    }
+    .leftnav_container .logo:hover {
+        /* background-size: 100% 100%;
+        height: 50px;
+        padding-top: 9px; */
+
+       text-decoration: underline;
+        
     }
     .leftnav_container .logo:nth-child(7) {
         margin-top: 80px;
