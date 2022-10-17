@@ -6,6 +6,7 @@ import styles from '../../styles/signup/signuppage.module.css';
 import FacebookIcon from '../../public/assets/signuppage/FacebookSVG';
 import GoogleIcon from '../../public/assets/signuppage/GoogleSVG';
 import TwitterIcon from '../../public/assets/signuppage/TwitterSVG';
+import BackgroundstarsSVG from '../../public/assets/signuppage/BackgroundstarsSVG';
 
 function signUp() {
     const [name, setName] = useState('');
@@ -43,6 +44,15 @@ function signUp() {
     return (
         <div className={styles.container}>
             <h2>Create an account</h2>
+        
+                <BackgroundstarsSVG className={styles.star1}  />
+                <BackgroundstarsSVG className={styles.star2}  />
+                <BackgroundstarsSVG className={styles.star3}  />
+                <BackgroundstarsSVG className={styles.star4}  />
+                <BackgroundstarsSVG className={styles.star5}  />
+                <BackgroundstarsSVG className={styles.star6}  />
+                <BackgroundstarsSVG className={styles.star7}  />
+         
             <form className={styles.input_forms}>
                 <label htmlFor="first_name">Full name</label>
                 <input
