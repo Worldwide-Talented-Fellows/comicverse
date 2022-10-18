@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import styles from '../../styles/hamburger_menu.module.css';
 import OverviewSVG from '../../public/assets/navbarSVG/OverviewSVG';
 import CollectionsSVG from '../../public/assets/navbarSVG/CollectionsSVG';
@@ -12,42 +13,68 @@ const LeftNav = ({ isOpen }) => {
     return (
         <div className={styles.leftnav_container}>
             <ul>
-                <div className={styles.logo}>
-                    <OverviewSVG />
-                    <li>Overview </li>
-                </div>
-                <div className={styles.logo}>
-                    <CollectionsSVG />
-                    <li>Collections </li>
-                </div>
-
-                <div className={styles.logo}>
-                    <FavoritesSVG />
-                    <li>Favorites </li>
-                </div>
-
-                <div className={styles.logo}>
-                    <ReviewsSVG />
-                    <li> Reviews</li>
-                </div>
-
-                <div className={styles.logo}>
-                    <MystorySVG />
-                    <li> My story</li>
-                </div>
-
-                <div className={styles.logo}>
-                    <li>Friends </li>
-                </div>
-
-                <div className={styles.logo}>
-                    <li>Settings </li>
-                </div>
-
-                <div className={styles.logo}>
-                    <LogoutSVG />
-                    <li> Logout</li>
-                </div>
+                <Link href={''}>
+                    <a>
+                        <div className={styles.logo}>
+                            <OverviewSVG />
+                            <li>Overview </li>
+                        </div>
+                    </a>
+                </Link>
+                <Link href={''}>
+                    <a>
+                        <div className={styles.logo}>
+                            <CollectionsSVG />
+                            <li>Collections </li>
+                        </div>
+                    </a>
+                </Link>
+                <Link href={''}>
+                    <a>
+                        <div className={styles.logo}>
+                            <FavoritesSVG />
+                            <li>Favorites </li>
+                        </div>
+                    </a>
+                </Link>
+                <Link href={''}>
+                    <a>
+                        <div className={styles.logo}>
+                            <ReviewsSVG />
+                            <li> Reviews</li>
+                        </div>
+                    </a>
+                </Link>
+                <Link href={''}>
+                    <a>
+                        <div className={styles.logo}>
+                            <MystorySVG />
+                            <li> My story</li>
+                        </div>
+                    </a>
+                </Link>
+                <Link href={''}>
+                    <a>
+                        <div className={styles.logo}>
+                            <li>Friends </li>
+                        </div>
+                    </a>
+                </Link>
+                <Link href={''}>
+                    <a>
+                        <div className={styles.logo}>
+                            <li>Settings </li>
+                        </div>
+                    </a>
+                </Link>
+                <Link href={''}>
+                    <a>
+                        <div className={styles.logo}>
+                            <LogoutSVG />
+                            <li> Logout</li>
+                        </div>
+                    </a>
+                </Link>
             </ul>
         </div>
     );
