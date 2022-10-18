@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../../styles/hamburger_menu.module.css';
 import SearchIconSVG from '../../public/assets/SearchIconSVG';
+import CancelSVG from '../../public/assets/navbarSVG/CancelSVG'
 
 import LeftNav from './LeftNav';
 
@@ -12,25 +13,26 @@ const Hamburger = () => {
             <div className={styles.hamburger_container}>
                 <div
                     className={styles.burger_icon}
-                    // open={open}
-                    onClick={() => setIsOpen(!isOpen)}
+                  
+                    onClick={() => setIsOpen(true)}
                 >
                     |||
                 </div>
-                {!isClicked && (
+                {!isClicked ? (
                     <SearchIconSVG
                         className={styles.icon}
                         onClick={() => setIsClicked(true)}
                     />
-                )}
+                ) : (
+                    <div className= {styles.searchbox} >
 
-                {isClicked && (
-                    <div>
-                        <input type="text" className={styles.input_field} />
+                        <input type="text" className={styles.input_field}  placeholder = 'search here...' />
+                        <CancelSVG />
                     </div>
                 )}
             </div>
-            <LeftNav isOpen={isOpen} />
+            <LeftNav isOpen={isOpen} setIsOpen = {setIsOpen} />
+         
         </div>
     );
 };
