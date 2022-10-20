@@ -1,25 +1,41 @@
+/* * {
+    border: 1px solid green;
+} */
+
 .mainBackground {
-    width: 100%;
-    min-height: 1027px;
-    background-color: #d9d9d9;
+    
+    /* width: 100%; */
+    height: 1027px;
+    /* height: 50%; */
+    background: linear-gradient(58.29deg, #8D99AE 8.17%, #97859C 23.99%, #D90429 59.64%, #B54A68 84.61%, #A1AE8D 108%);
+    color: white;
 }
+
 .container {
     width: 90%;
     margin: 0 auto;
 }
 
+/* .playerImage, .basketballPlayer{
+    padding-top: 10%;
+} */
+
 .title {
+    position: relative;
+    z-index: 5;
     padding-top: 289px;
     font-weight: 700;
     font-size: 64px;
+    /* font-size: clamp(4rem, 2.5vw, 2rem); */
     max-width: 553px;
     min-height: 192px;
     line-height: 96px;
     /* you'll need to figure this one out */
     font-family: 'Poppins';
-    color: #000000;
 }
 .subtitle {
+    position: relative;
+    z-index: 5;
     font-weight: 500;
     font-size: 24px;
     line-height: 36px;
@@ -35,45 +51,179 @@
 }
 
 .introButton {
+    position: relative;
+    z-index: 5;
     width: 298px;
     height: 60px;
     border-radius: 8px;
     color: white;
-    background-color: #2b2d42;
+    background-color: #2B2D42;
+    font-size: 20px; 
 }
+
+.wrappingImage {
+    position: fixed !important;
+    top: 114px;
+    right: 80px;
+    width: 50%; 
+    display: flex;
+    justify-content: flex-end;
+    max-height: 1200px;
+}
+/* .basketballPlayer {
+    position: fixed !important;
+    width: 50%;
+} */
+
+
+.starPlacement {
+    position: relative !important;
+    bottom: 500px;
+    left: 650px;
+}
+
+.starPlacement2 {
+    position: relative !important;
+    bottom: 900px;
+    right: 90px;
+}
+
+.starPlacement3 {
+    position: absolute !important;
+    top: 900px;
+    left: 200px;
+} 
 
 .listingItems {
     display: grid;
-    /* list-style-type: none; */
+    list-style-type: none;
+    font-family: 'Poppins';
     font-size: 40px;
-    margin-top: -75px;
 }
 
 .comic {
-    animation: comic 3s infinite linear;
+    animation: comic 6s infinite cubic-bezier(0.22, 0.61, 0.36, 1);
     grid-column: 1;
     grid-row: 1;
 }
 .comic:nth-child(2) {
-    animation-delay: 1s;
+    animation-delay: 2s;
     opacity: 0;
 }
 .comic:nth-child(3) {
-    animation-delay: 2s;
+    animation-delay: 4s;
     opacity: 0;
 }
 
 @keyframes comic {
     0% {
-        margin-top: 0px;
-        opacity: 0.5;
+        /* margin-top: 0px; */
+        opacity: 1;
+        /* font-size: 32px; */
+        /* font-weight: 500; */
+        transform: scale(1);
     }
     50% {
-        margin-top: 100px;
-        opacity: 1;
+        /* margin-top: 100px; */
+        /* font-size: 28px; */
+        opacity: 0.5;
+        transform: scale(0.8);
     }
     100% {
         margin-top: 200px;
+        /* font-size: 24px; */
         opacity: 0;
+        transform: scale(0.6);
     }
+}
+
+
+@media only screen and (max-width: 1400px) {
+    .mainBackground {
+        height: 598px;
+    }
+    .wrappingImage {
+        right: 0px;
+        /* display: flex;
+        justify-content: flex-end; */
+        /* max-height: 1200px; */
+        width: 514px;
+        height: 498px;
+    }
+    .starPlacement, .starPlacement2 {
+        display: none;
+    }
+    .starPlacement3 {
+        width: 15px;
+        height: 15px;
+    }
+    .star {
+        display: none;
+    }
+    .listingItems {
+        font-size: 15px;
+    }
+    .title {
+        position: relative !important;
+        font-size: 24px;
+        font-weight: 700;
+        width: 193.81px;
+        line-height: 36.53px;
+        padding-top: 10%;
+        z-index: 1;
+    }
+    .introButton {
+        position: relative !important;
+        width: 158px;
+        height: 57px;
+        font-size: 12px;
+        /* line-height: 18px; */
+        font-weight: 500;
+    }
+    .subtitle {
+        position: relative;
+        font-size: 16px;
+        width: 278px;
+        line-height: 18.26px;
+        padding-top: 5%;
+        z-index: 5;
+    }
+}
+
+@media only screen and (max-width: 850px) { 
+    .wrappingImage{
+        padding-top: 50px;
+        width: 300px;
+        height: 400px;
+    }
+}
+
+@media only screen and (max-width: 600px) { 
+    .wrappingImage{
+        padding-top: 185px;
+        width: 220px;
+        height: 258px;
+    }
+    .subtitle {
+        width: 50%;
+        height: 15px;
+    }
+    .title {
+        padding-top: 110px;
+        line-height: 36px;
+    }
+    .listingItems {
+        margin-bottom: 100px;
+    }
+    .mainBackground {
+        height: 500px;
+    }
+}
+
+
+@media only screen and (min-width: 300px) {
+    /* .wrappingImage {
+        width: 40%;
+        height: 40%;
+    } */
 }
